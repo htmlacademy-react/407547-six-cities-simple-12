@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов (простой)»
 
 * Студент: [Viktoriia Bondarenko](https://up.htmlacademy.ru/react/12/user/407547).
-* Наставник: `Неизвестно`.
+* Наставник: [Александр Тимоновский](https://htmlacademy.ru/profile/id768125).
 
 ---
 
