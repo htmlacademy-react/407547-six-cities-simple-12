@@ -1,10 +1,11 @@
 import Card from '../../components/card/card';
 import {OfferCount} from '../../types/offer-count';
 import Header from '../../components/header/header';
+import {Fragment} from "react";
 
 function Main({count}: OfferCount): JSX.Element {
   return (
-    <div>
+    <Fragment>
       <Header/>
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
@@ -76,7 +77,7 @@ function Main({count}: OfferCount): JSX.Element {
           </div>
         </div>
       </main>
-    </div>
+    </Fragment>
   );
 }
 export default Main;
