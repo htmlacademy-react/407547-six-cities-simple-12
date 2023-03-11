@@ -1,9 +1,9 @@
 import Card from '../../components/card/card';
-import {OfferCount} from '../../types/offer-count';
+import {AppProps} from '../../types/app-props';
 import Header from '../../components/header/header';
 import {Fragment} from "react";
 
-function Main({count}: OfferCount): JSX.Element {
+function Main({count, offers}: AppProps): JSX.Element {
   return (
     <Fragment>
       <Header/>
@@ -67,7 +67,8 @@ function Main({count}: OfferCount): JSX.Element {
               </form>
               <div className="cities__places-list places__list tabs__content">
                 {
-                  Array(count).fill(<Card/>)
+                  // Array(count).fill(<Card/>)
+                  offers.map(offer => <Card {...offer} />)
                 }
               </div>
             </section>
