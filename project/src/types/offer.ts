@@ -22,7 +22,7 @@ export type LocationOffer = {
   zoom: number;
 }
 
-export type Offer = { 
+export type Offer = {
   bedrooms: number;
   city: City;
   description: string;
@@ -38,4 +38,12 @@ export type Offer = {
   rating: number;
   title: string;
   type: string;
+}
+
+export type Review = {
+  comment: string;
+  date: string;
+  id: number;
+  rating: number;
+  user: Host;
 }

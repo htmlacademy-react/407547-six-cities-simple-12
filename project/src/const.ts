@@ -5,6 +5,8 @@ export enum AppRoute {
 }
 
 export enum OfferType {
-  Apartment = 'apartment',
-  PrivateRoom = 'private room'
+  Apartment = 'Apartment',
+  PrivateRoom = 'Private room'
 }
+
+export const AVATAR_URL = 'https://i.pravatar.cc/128';

@@ -1,12 +1,26 @@
 import {Offer} from "../../types/offer";
+import {Link} from "react-router-dom";
+import {AppRoute} from "../../const";
+import {getStarRating} from "../../utils";
 
-function Card(offer: Offer): JSX.Element {
-  console.log(offer)
+type CardProps = {
+  offer: Offer
+}
+
+function Card(props: CardProps): JSX.Element {
+  const {offer} = props;
+  const rating = getStarRating(offer.rating);
   return (
-    <article className="cities__card place-card">
-      <div className="place-card__mark">
-        <span>Premium</span>
-      </div>
+    <article
+      className="cities__card place-card"
+      data-id={offer.id}
+    >
+      {
+        offer.isPremium &&
+        <div className="place-card__mark">
+          <span>Premium</span>
+        </div>
+      }
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
           <img className="place-card__image" src={offer.previewImage} width="260" height="200"
@@ -24,12 +38,12 @@ function Card(offer: Offer): JSX.Element {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: '80%'}}></span>
+            <span style={{width: `${rating}%`}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{offer.title}</a>
+          <Link to={`${AppRoute.Offer}/${offer.id}`}>{offer.title}</Link>
         </h2>
         <p className="place-card__type">{offer.type}</p>
       </div>

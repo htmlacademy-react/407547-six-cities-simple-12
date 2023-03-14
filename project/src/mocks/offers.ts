@@ -1,7 +1,5 @@
 import {Offer} from "../types/offer";
-import {OfferType} from "../const";
-
-const AVATAR_URL = 'https://i.pravatar.cc/128';
+import {OfferType, AVATAR_URL} from "../const";
 
 export const offers: Offer[] = [
   {
@@ -35,10 +33,12 @@ export const offers: Offer[] = [
     },
     id: 1,
     images: [
-      'img/mocks/living-room/1.jpg',
-      'img/mocks/kitchen/1.jpg',
-      'img/mocks/bathroom/1.jpg',
-      'img/mocks/interior/1.jpg',
+      'img/mocks/1-1.jpg',
+      'img/mocks/1-2.jpg',
+      'img/mocks/1-3.jpg',
+      'img/mocks/1-4.jpg',
+      'img/mocks/1-5.jpg',
+      'img/mocks/1-6.jpg',
     ],
     isPremium: true,
     location: {
@@ -47,7 +47,7 @@ export const offers: Offer[] = [
       zoom: 8
     },
     maxAdults: 4,
-    previewImage: 'img/mocks/living-room/8.jpg',
+    previewImage: 'img/mocks/1-1.jpg',
     price: 150,
     rating: 4.7,
     title: 'Beautiful & luxurious studio at great location',
@@ -81,10 +81,12 @@ export const offers: Offer[] = [
     },
     id: 2,
     images: [
-      'img/mocks/living-room/2.jpg',
-      'img/mocks/kitchen/2.jpg',
-      'img/mocks/bathroom/2.jpg',
-      'img/mocks/interior/2.jpg',
+      'img/mocks/2-1.jpg',
+      'img/mocks/2-2.jpg',
+      'img/mocks/2-3.jpg',
+      'img/mocks/2-4.jpg',
+      'img/mocks/2-5.jpg',
+      'img/mocks/2-6.jpg',
     ],
     isPremium: false,
     location: {
@@ -93,9 +95,9 @@ export const offers: Offer[] = [
       zoom: 8
     },
     maxAdults: 3,
-    previewImage: 'img/mocks/living-room/2.jpg',
+    previewImage: 'img/mocks/2-1.jpg',
     price: 95,
-    rating: 4.8,
+    rating: 3.2,
     title: 'Wood and stone place',
     type: OfferType.Apartment,
   },
@@ -122,26 +124,28 @@ export const offers: Offer[] = [
     host: {
       avatarUrl: `${AVATAR_URL}?rnd=${Math.random()}`,
       id: 32,
-      isPro: false,
+      isPro: true,
       name: 'Jack'
     },
     id: 3,
     images: [
-      'img/mocks/living-room/3.jpg',
-      'img/mocks/kitchen/3.jpg',
-      'img/mocks/interior/3.jpg',
-      'img/mocks/interior/3.jpg'
+      'img/mocks/3-1.jpg',
+      'img/mocks/3-2.jpg',
+      'img/mocks/3-3.jpg',
+      'img/mocks/3-4.jpg',
+      'img/mocks/3-5.jpg',
+      'img/mocks/3-6.jpg'
     ],
-    isPremium: true,
+    isPremium: false,
     location: {
       latitude: 52.35514938496378,
       longitude: 4.673877537499948,
       zoom: 8
     },
     maxAdults: 2,
-    previewImage: 'img/mocks/living-room/3.jpg',
+    previewImage: 'img/mocks/3-1.jpg',
     price: 85,
-    rating: 4.5,
+    rating: 4.0,
     title: 'Canal View Prinsengracht',
     type: OfferType.Apartment,
   },
@@ -167,15 +171,17 @@ export const offers: Offer[] = [
     host: {
       avatarUrl: `${AVATAR_URL}?rnd=${Math.random()}`,
       id: 14,
-      isPro: false,
+      isPro: true,
       name: 'Catherine'
     },
     id: 4,
     images: [
-      'img/mocks/living-room/4.jpg',
-      'img/mocks/kitchen/4.jpg',
-      'img/mocks/bathroom/4.jpg',
-      'img/mocks/interior/4.jpg',
+      'img/mocks/4-1.jpg',
+      'img/mocks/4-2.jpg',
+      'img/mocks/4-3.jpg',
+      'img/mocks/4-4.jpg',
+      'img/mocks/4-5.jpg',
+      'img/mocks/4-6.jpg'
     ],
     isPremium: true,
     location: {
@@ -184,7 +190,7 @@ export const offers: Offer[] = [
       zoom: 8
     },
     maxAdults: 2,
-    previewImage: 'img/mocks/living-room/4.jpg',
+    previewImage: 'img/mocks/4-1.jpg',
     price: 90,
     rating: 4.5,
     title: 'Canal View Prinsengracht',
