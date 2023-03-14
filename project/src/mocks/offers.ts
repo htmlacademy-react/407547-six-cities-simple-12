@@ -1,5 +1,5 @@
-import {Offer} from "../types/offer";
-import {OfferType, AVATAR_URL} from "../const";
+import {Offer} from '../types/offer';
+import {OfferType, AVATAR_URL} from '../const';
 
 export const offers: Offer[] = [
   {
@@ -196,4 +196,4 @@ export const offers: Offer[] = [
     title: 'Canal View Prinsengracht',
     type: OfferType.PrivateRoom,
   },
-]
+];

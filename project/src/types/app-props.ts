@@ -1,6 +1,6 @@
-import {Offer} from "./offer";
+import {Offer} from './offer';
 
 export type AppProps = {
   count: number;
-  offers: Offer[]
+  offers: Offer[];
 }

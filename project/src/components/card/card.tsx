@@ -1,10 +1,10 @@
-import {Offer} from "../../types/offer";
-import {Link} from "react-router-dom";
-import {AppRoute} from "../../const";
-import {getStarRating} from "../../utils";
+import {Offer} from '../../types/offer';
+import {Link} from 'react-router-dom';
+import {AppRoute} from '../../const';
+import {getStarRating} from '../../utils';
 
 type CardProps = {
-  offer: Offer
+  offer: Offer;
 }
 
 function Card(props: CardProps): JSX.Element {

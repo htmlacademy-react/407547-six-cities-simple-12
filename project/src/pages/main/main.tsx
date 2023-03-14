@@ -1,7 +1,7 @@
 import {AppProps} from '../../types/app-props';
 import Header from '../../components/header/header';
-import {Fragment} from "react";
-import OfferList from "../../components/offer-list/offer-list";
+import {Fragment} from 'react';
+import OfferList from '../../components/offer-list/offer-list';
 
 function Main({count, offers}: AppProps): JSX.Element {
   return (
@@ -65,9 +65,9 @@ function Main({count, offers}: AppProps): JSX.Element {
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-                {
-                  <OfferList offers = {offers} />
-                }
+              {
+                <OfferList offers = {offers} />
+              }
             </section>
             <div className="cities__right-section">
               <section className="cities__map map"></section>

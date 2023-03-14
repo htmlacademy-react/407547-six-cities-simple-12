@@ -1,51 +1,48 @@
-import Header from "../../components/header/header";
+import Header from '../../components/header/header';
 import { useParams } from 'react-router-dom';
-import {offers} from "../../mocks/offers";
-import {reviews} from "../../mocks/reviews";
-import {getStarRating, parseDate} from "../../utils";
-import {Offer} from "../../types/offer";
-import AddReview from "../../components/add-review/add-review";
+import {offers} from '../../mocks/offers';
+import {reviews} from '../../mocks/reviews';
+import {getStarRating, parseDate} from '../../utils';
+import {Offer} from '../../types/offer';
+import AddReview from '../../components/add-review/add-review';
+import {randomId} from '../../utils';
 
 function Room(): JSX.Element {
   // Get the offerId param from the URL
   const params = useParams();
   const offerId = params.id;
-  const offer = offers.find(currentValue => currentValue.id === Number(offerId)) as Offer;
+  const offer = offers.find((currentValue) => currentValue.id === Number(offerId)) as Offer;
   //Goods
   const generateGoods = () => {
     if (!offer.goods.length) {
-      return (<h3>Not goods</h3>)
+      return (<h3>Not goods</h3>);
     }
-    const goods = offer.goods.map((currentValue, index) => {
-      return (
-        <li className="property__inside-item" key={index}>{currentValue}</li>
-      )
-    })
-    return goods
-  }
+    const goods = offer.goods.map((currentValue) => (
+      <li className="property__inside-item" key={randomId()}>{currentValue}</li>
+    ));
+    return goods;
+  };
   //Images
   const generateImages = () => {
     if (!offer.goods.length) {
-      return (<h3>Not images</h3>)
+      return (<h3>Not images</h3>);
     }
-    const images = offer.images.map((currentValue, index) => {
-      return (
-        <div className="property__image-wrapper" key={index}>
-          <img className="property__image" src={currentValue} alt=""/>
-        </div>
-      )
-    })
-    return images
-  }
+    const images = offer.images.map((currentValue) => (
+      <div className="property__image-wrapper" key={randomId()}>
+        <img className="property__image" src={currentValue} alt=""/>
+      </div>
+    ));
+    return images;
+  };
   //Reviews
   const getOfferReviews = reviews.filter((currentValue) => currentValue.id === offer.id);
   const generateReviews = () => {
     if (getOfferReviews.length) {
-      return getOfferReviews.map((currentValue, index) => {
+      return getOfferReviews.map((currentValue) => {
         const rating = getStarRating(currentValue.rating);
         const dateReview = parseDate(currentValue.date);
         return (
-          <li className="reviews__item" key={index}>
+          <li className="reviews__item" key={randomId()}>
             <div className="reviews__user user">
               <div className="reviews__avatar-wrapper user__avatar-wrapper">
                 <img
@@ -66,15 +63,16 @@ function Room(): JSX.Element {
               <p className="reviews__text">{currentValue.comment}</p>
               <time
                 className="reviews__time"
-                dateTime={`${dateReview.year}-${dateReview.month}-${dateReview.day}`}>
+                dateTime={`${dateReview.year}-${dateReview.month}-${dateReview.day}`}
+              >
                 {`${dateReview.longMonth} ${dateReview.year}`}
               </time>
             </div>
           </li>
-        )
-      })
+        );
+      });
     }
-  }
+  };
   const images = generateImages();
   const goods = generateGoods();
   const offerReviews = generateReviews();
@@ -89,11 +87,15 @@ function Room(): JSX.Element {
           </symbol>
           <symbol id="icon-bookmark" viewBox="0 0 17 18">
             <path
-              d="M3.993 2.185l.017-.092V2c0-.554.449-1 .99-1h10c.522 0 .957.41.997.923l-2.736 14.59-4.814-2.407-.39-.195-.408.153L1.31 16.44 3.993 2.185z"></path>
+              d="M3.993 2.185l.017-.092V2c0-.554.449-1 .99-1h10c.522 0 .957.41.997.923l-2.736 14.59-4.814-2.407-.39-.195-.408.153L1.31 16.44 3.993 2.185z"
+            >
+            </path>
           </symbol>
           <symbol id="icon-star" viewBox="0 0 13 12">
             <path fillRule="evenodd" clipRule="evenodd"
-                  d="M6.5 9.644L10.517 12 9.451 7.56 13 4.573l-4.674-.386L6.5 0 4.673 4.187 0 4.573 3.549 7.56 2.483 12 6.5 9.644z"></path>
+              d="M6.5 9.644L10.517 12 9.451 7.56 13 4.573l-4.674-.386L6.5 0 4.673 4.187 0 4.573 3.549 7.56 2.483 12 6.5 9.644z"
+            >
+            </path>
           </symbol>
         </svg>
       </div>
@@ -149,7 +151,7 @@ function Room(): JSX.Element {
               <div className="property__host">
                 <h2 className="property__host-title">Meet the host</h2>
                 <div className="property__host-user user">
-                  <div className={`property__avatar-wrapper ${offer.host.isPro && 'property__avatar-wrapper--pro'} user__avatar-wrapper`}>
+                  <div className={`property__avatar-wrapper ${offer.host.isPro ? 'property__avatar-wrapper--pro' : ''} user__avatar-wrapper`}>
                     <img
                       className="property__avatar user__avatar"
                       src={offer.host.avatarUrl} width="74" height="74"
@@ -157,7 +159,7 @@ function Room(): JSX.Element {
                     />
                   </div>
                   <span className="property__user-name">
-                      {offer.host.name}
+                    {offer.host.name}
                   </span>
                   {
                     offer.host.isPro &&

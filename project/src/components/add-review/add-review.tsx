@@ -1,4 +1,4 @@
-import {ChangeEvent, FormEvent, useState} from "react";
+import {ChangeEvent, FormEvent, useState} from 'react';
 
 function AddReview(): JSX.Element {
   const [isDisabled, setDisabled] = useState(true);
@@ -6,22 +6,22 @@ function AddReview(): JSX.Element {
   const [review, setReview] = useState('');
 
   const ratingChangeHandler = (evt: ChangeEvent<HTMLInputElement>) => {
-    setRating(evt.target.value)
-  }
+    setRating(evt.target.value);
+  };
   const reviewChangeHandler = (evt: ChangeEvent<HTMLTextAreaElement>) => {
-    setReview(evt.target.value.trim())
+    setReview(evt.target.value.trim());
     setDisabled(false);
-  }
+  };
   const submitHandler = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
-    const reviewData = {
-      rating,
-      review
-    }
+    // const reviewData = {
+    //   rating,
+    //   review
+    // }
     setDisabled(true);
     setRating('');
     setReview('');
-  }
+  };
   return (
     <form
       className="reviews__form form"
@@ -107,11 +107,11 @@ function AddReview(): JSX.Element {
         </label>
       </div>
       <textarea className="reviews__textarea form__textarea"
-                id="review"
-                name="review"
-                placeholder="Tell how was your stay, what you like and what can be improved"
-                onChange={reviewChangeHandler}
-                value={review}
+        id="review"
+        name="review"
+        placeholder="Tell how was your stay, what you like and what can be improved"
+        onChange={reviewChangeHandler}
+        value={review}
       >
       </textarea>
       <div className="reviews__button-wrapper">
@@ -122,11 +122,12 @@ function AddReview(): JSX.Element {
         <button
           className="reviews__submit form__submit button"
           type="submit"
-          disabled={isDisabled}>Submit
+          disabled={isDisabled}
+        >Submit
         </button>
       </div>
     </form>
-  )
+  );
 }
 
 export default AddReview;

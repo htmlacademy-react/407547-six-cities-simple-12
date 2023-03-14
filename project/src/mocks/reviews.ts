@@ -1,5 +1,5 @@
-import {Review} from "../types/offer";
-import {AVATAR_URL} from "../const";
+import {Review} from '../types/offer';
+import {AVATAR_URL} from '../const';
 
 export const reviews: Review[] = [
   {
@@ -62,4 +62,4 @@ export const reviews: Review[] = [
       name: 'Harry'
     }
   }
-]
+];
