@@ -5,15 +5,18 @@ import {getStarRating} from '../../utils';
 
 type CardProps = {
   offer: Offer;
+  onMouseOver: (id: number) => void;
 }
 
 function Card(props: CardProps): JSX.Element {
   const {offer} = props;
+  const {onMouseOver} = props;
   const rating = getStarRating(offer.rating);
   return (
     <article
       className="cities__card place-card"
       data-id={offer.id}
+      onMouseOver={() => onMouseOver(offer.id)}
     >
       {
         offer.isPremium &&
@@ -22,9 +25,9 @@ function Card(props: CardProps): JSX.Element {
         </div>
       }
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#">
+        <a href="/">
           <img className="place-card__image" src={offer.previewImage} width="260" height="200"
-            alt="Place image"
+            alt={offer.title}
           />
         </a>
       </div>

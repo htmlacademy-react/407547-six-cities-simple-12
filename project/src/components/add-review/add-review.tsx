@@ -14,10 +14,6 @@ function AddReview(): JSX.Element {
   };
   const submitHandler = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
-    // const reviewData = {
-    //   rating,
-    //   review
-    // }
     setDisabled(true);
     setRating('');
     setReview('');
