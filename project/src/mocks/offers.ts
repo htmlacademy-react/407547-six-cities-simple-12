@@ -6,11 +6,11 @@ export const offers: Offer[] = [
     bedrooms: 3,
     city: {
       location: {
-        latitude: 48.856614,
-        longitude: 2.352222,
-        zoom: 10
+        latitude: 52.370216,
+        longitude: 4.895168,
+        zoom: 12
       },
-      name: 'Paris'
+      name: 'Amsterdam'
     },
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     goods: [
@@ -42,9 +42,9 @@ export const offers: Offer[] = [
     ],
     isPremium: true,
     location: {
-      latitude: 48.85610,
-      longitude: 2.35029,
-      zoom: 8
+      latitude: 52.3909553943508,
+      longitude: 4.85309666406198,
+      zoom: 12
     },
     maxAdults: 4,
     previewImage: 'img/mocks/1-1.jpg',
@@ -57,11 +57,11 @@ export const offers: Offer[] = [
     bedrooms: 2,
     city: {
       location: {
-        latitude: 48.856614,
-        longitude: 2.352222,
-        zoom: 10
+        latitude: 52.370216,
+        longitude: 4.895168,
+        zoom: 12
       },
-      name: 'Paris'
+      name: 'Amsterdam'
     },
     description: 'Principes definitiones ut vix, te pri simul volumus. Ei adhuc scaevola interpretaris quo, in epicurei pertinax invenire his, has at semper doctus abhorreant. Ad viris voluptatibus quo, graece referrentur deterruisset no mel. Mei id rebum percipit, eam an nullam nusquam comprehensam.',
     goods: [
@@ -90,9 +90,9 @@ export const offers: Offer[] = [
     ],
     isPremium: false,
     location: {
-      latitude: 48.85596,
-      longitude: 2.35375,
-      zoom: 8
+      latitude: 52.3609553943508,
+      longitude: 4.85309666406198,
+      zoom: 12
     },
     maxAdults: 3,
     previewImage: 'img/mocks/2-1.jpg',
@@ -107,7 +107,7 @@ export const offers: Offer[] = [
       location: {
         latitude: 52.370216,
         longitude: 4.895168,
-        zoom: 10
+        zoom: 12
       },
       name: 'Amsterdam'
     },
@@ -138,26 +138,26 @@ export const offers: Offer[] = [
     ],
     isPremium: false,
     location: {
-      latitude: 52.35514938496378,
-      longitude: 4.673877537499948,
-      zoom: 8
+      latitude: 52.3909553943508,
+      longitude: 4.929309666406198,
+      zoom: 12
     },
     maxAdults: 2,
     previewImage: 'img/mocks/3-1.jpg',
     price: 85,
     rating: 4.0,
-    title: 'Canal View Prinsengracht',
+    title: 'Canal View',
     type: OfferType.Apartment,
   },
   {
     bedrooms: 1,
     city: {
       location: {
-        latitude: 51.09662,
-        longitude: 7.03674,
-        zoom: 10
+        latitude: 52.370216,
+        longitude: 4.895168,
+        zoom: 12
       },
-      name: 'Dusseldorf'
+      name: 'Amsterdam'
     },
     description: 'Illum consequat sea in. Te liber aperiam his, per ea nominavi appetere. Iisque tamquam cu sit. Nam perfecto recusabo id, habeo dolor expetenda no sit, eos at altera denique. Est facilis volumus consectetuer cu, te utamur alienum contentiones nec. Prima ceteros verterem has an, aliquip cotidieque ea nec.',
     goods: [
@@ -185,9 +185,9 @@ export const offers: Offer[] = [
     ],
     isPremium: true,
     location: {
-      latitude: 51.21971,
-      longitude: 6.77917,
-      zoom: 8
+      latitude: 52.3809553943508,
+      longitude: 4.939309666406198,
+      zoom: 12
     },
     maxAdults: 2,
     previewImage: 'img/mocks/4-1.jpg',
