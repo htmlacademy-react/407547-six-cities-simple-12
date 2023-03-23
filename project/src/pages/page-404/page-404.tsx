@@ -1,5 +1,5 @@
 import './page-404.css';
-import {Link} from "react-router-dom";
+import {Link} from 'react-router-dom';
 function Page404(): JSX.Element {
   return (
     <section className="error-page container">
@@ -10,7 +10,7 @@ function Page404(): JSX.Element {
         <Link to="/" className="error-page__btn">Home Page</Link>
       </div>
     </section>
-  )
+  );
 }
 
 export default Page404;

@@ -1,9 +1,9 @@
-import Card from '../../components/card/card';
-import {OfferCount} from '../../types/offer-count';
+import {AppProps} from '../../types/app-props';
 import Header from '../../components/header/header';
-import {Fragment} from "react";
+import {Fragment} from 'react';
+import OfferList from '../../components/offer-list/offer-list';
 
-function Main({count}: OfferCount): JSX.Element {
+function Main({count, offers}: AppProps): JSX.Element {
   return (
     <Fragment>
       <Header/>
@@ -13,32 +13,32 @@ function Main({count}: OfferCount): JSX.Element {
           <section className="locations container">
             <ul className="locations__list tabs__list">
               <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
+                <a className="locations__item-link tabs__item" href="/">
                   <span>Paris</span>
                 </a>
               </li>
               <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
+                <a className="locations__item-link tabs__item" href="/">
                   <span>Cologne</span>
                 </a>
               </li>
               <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
+                <a className="locations__item-link tabs__item" href="/">
                   <span>Brussels</span>
                 </a>
               </li>
               <li className="locations__item">
-                <a className="locations__item-link tabs__item tabs__item--active">
+                <a className="locations__item-link tabs__item tabs__item--active" href="/">
                   <span>Amsterdam</span>
                 </a>
               </li>
               <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
+                <a className="locations__item-link tabs__item" href="/">
                   <span>Hamburg</span>
                 </a>
               </li>
               <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
+                <a className="locations__item-link tabs__item" href="/">
                   <span>Dusseldorf</span>
                 </a>
               </li>
@@ -65,11 +65,9 @@ function Main({count}: OfferCount): JSX.Element {
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              <div className="cities__places-list places__list tabs__content">
-                {
-                  Array(count).fill(<Card/>)
-                }
-              </div>
+              {
+                <OfferList offers = {offers} />
+              }
             </section>
             <div className="cities__right-section">
               <section className="cities__map map"></section>
