@@ -10,9 +10,8 @@ function ReviewList(props: ReviewListProps): JSX.Element {
   return (
     <ul className="reviews__list">
       {reviews.map((currentValue ) => (
-        <ReviewItem
-          key={randomId()}
-          review={currentValue}
+        <ReviewItem key = {randomId()}
+                    review = {currentValue}
         />
       ))}
     </ul>
