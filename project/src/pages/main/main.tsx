@@ -1,9 +1,11 @@
 import {AppProps} from '../../types/app-props';
 import Header from '../../components/header/header';
-import {Fragment} from 'react';
+import {Fragment, useState} from 'react';
 import OfferList from '../../components/offer-list/offer-list';
+import Map from '../../components/map/map';
 
-function Main({count, offers}: AppProps): JSX.Element {
+function Main({count, offers, city}: AppProps): JSX.Element {
+  const [activeCard, setActiveCard] = useState< undefined | number >(undefined);
   return (
     <Fragment>
       <Header/>
@@ -66,11 +68,19 @@ function Main({count, offers}: AppProps): JSX.Element {
                 </ul>
               </form>
               {
-                <OfferList offers = {offers} />
+                <OfferList
+                  offers = {offers}
+                  setActiveCard = {setActiveCard}
+                />
               }
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <Map
+                className='cities__map map'
+                city = {city}
+                offers = {offers}
+                setActiveCard = {activeCard}
+              />
             </div>
           </div>
         </div>
