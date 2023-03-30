@@ -1,23 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
-import {offers} from './mocks/offers';
-import {city} from './mocks/city';
-
-const Setting = {
-  Count: 5
-} as const;
+import {Provider} from "react-redux";
+import {store} from './store';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
 
 root.render(
+
   <React.StrictMode>
-    <App
-      count = {Setting.Count}
-      offers = {offers}
-      city = {city}
-    />
+    <Provider store = {store}>
+      <App/>
+    </Provider>
   </React.StrictMode>,
 );
+

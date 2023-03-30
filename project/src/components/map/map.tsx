@@ -39,12 +39,15 @@ function Map({city, offers, setActiveCard, className}: MapProps ): JSX.Element {
 
   useEffect(() => {
     if (map) {
+      map.setView({
+        lat: city.location.latitude,
+        lng: city.location.longitude
+      });
       points.forEach((point) => {
         const marker = new Marker({
           lat: point.latitude,
           lng: point.longitude
         });
-
         marker
           .setIcon(
             setActiveCard !== undefined && point.id === setActiveCard
@@ -57,7 +60,10 @@ function Map({city, offers, setActiveCard, className}: MapProps ): JSX.Element {
   }, [map, points, setActiveCard]);
 
   return (
-    <section className={className} ref={mapRef} />
+    <section className={className}
+             style={{ height: '100vh' }}
+             ref={mapRef}
+    />
   );
 }
 
