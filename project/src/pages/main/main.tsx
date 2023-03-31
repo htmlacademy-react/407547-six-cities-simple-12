@@ -4,7 +4,7 @@ import {Fragment, useState} from 'react';
 import OfferList from '../../components/offer-list/offer-list';
 import Map from '../../components/map/map';
 
-function Main({count, offers, city}: AppProps): JSX.Element {
+function Main({offers, city}: AppProps): JSX.Element {
   const [activeCard, setActiveCard] = useState< undefined | number >(undefined);
   return (
     <Fragment>
@@ -68,18 +68,17 @@ function Main({count, offers, city}: AppProps): JSX.Element {
                 </ul>
               </form>
               {
-                <OfferList
-                  offers = {offers}
-                  setActiveCard = {setActiveCard}
+                <OfferList offers = {offers}
+                           setActiveCard = {setActiveCard}
+                           className = {'cities__places-list places__list tabs__content'}
                 />
               }
             </section>
             <div className="cities__right-section">
-              <Map
-                className='cities__map map'
-                city = {city}
-                offers = {offers}
-                setActiveCard = {activeCard}
+              <Map className='cities__map map'
+                   city = {city}
+                   offers = {offers}
+                   setActiveCard = {activeCard}
               />
             </div>
           </div>

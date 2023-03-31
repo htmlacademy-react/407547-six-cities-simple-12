@@ -5,17 +5,17 @@ import {randomId} from '../../utils';
 type OfferListProps = {
   offers: Offer[];
   setActiveCard: (id: number | undefined) => void;
+  className: string;
 }
 
 function OfferList(props: OfferListProps): JSX.Element {
-  const {offers, setActiveCard} = props;
+  const {offers, setActiveCard, className} = props;
   return (
-    <div className="cities__places-list places__list tabs__content">
+    <div className={className}>
       {offers.map((currentValue: Offer) => (
-        <Card
-          key={randomId()}
-          offer={currentValue}
-          setActiveCard={setActiveCard}
+        <Card key={randomId()}
+              offer={currentValue}
+              setActiveCard={setActiveCard}
         />
       ))}
     </div>

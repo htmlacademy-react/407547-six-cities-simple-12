@@ -13,11 +13,9 @@ function Card(props: CardProps): JSX.Element {
   const rating = getStarRating(offer.rating);
 
   return (
-    <Link to={`${AppRoute.Offer}/${offer.id}`}>
-      <article
-        className="cities__card place-card"
-        onMouseOver={() => setActiveCard(offer.id)}
-        onMouseLeave={() => setActiveCard(undefined)}
+      <article className="cities__card place-card"
+               onMouseOver={() => setActiveCard(offer.id)}
+               onMouseLeave={() => setActiveCard(undefined)}
       >
         {
           offer.isPremium &&
@@ -26,11 +24,11 @@ function Card(props: CardProps): JSX.Element {
           </div>
         }
         <div className="cities__image-wrapper place-card__image-wrapper">
-          <a href="/">
+          <Link to={`${AppRoute.Offer}/${offer.id}`}>
             <img className="place-card__image" src={offer.previewImage} width="260" height="200"
               alt={offer.title}
             />
-          </a>
+          </Link>
         </div>
         <div className="place-card__info">
           <div className="place-card__price-wrapper">
@@ -47,12 +45,11 @@ function Card(props: CardProps): JSX.Element {
             </div>
           </div>
           <h2 className="place-card__name">
-            {offer.title}
+            <Link to={`${AppRoute.Offer}/${offer.id}`}>{offer.title}</Link>
           </h2>
           <p className="place-card__type">{offer.type}</p>
         </div>
       </article>
-    </Link>
   );
 }
 export default Card;
