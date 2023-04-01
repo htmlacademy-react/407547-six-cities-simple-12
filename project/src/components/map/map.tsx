@@ -61,7 +61,7 @@ function Map({city, offers, setActiveCard, className}: MapProps ): JSX.Element {
 
   return (
     <section className={className}
-             style={{ height: '100vh' }}
+             style={{ height: '722px' }}
              ref={mapRef}
     />
   );

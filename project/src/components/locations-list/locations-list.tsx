@@ -15,7 +15,6 @@ function LocationsList (): JSX.Element {
     evt.preventDefault();
     const target = evt.target as HTMLLIElement;
     if (target.tagName === 'SPAN') {
-      const target = evt.target as Element;
       dispatch(changeCity(target.innerHTML));
       dispatch(loadOffers())
     }
