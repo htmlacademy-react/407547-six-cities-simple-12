@@ -68,4 +68,4 @@ export const locations = [
       zoom: 13
     }
   }
-]
+];

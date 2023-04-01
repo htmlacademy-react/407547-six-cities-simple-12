@@ -57,12 +57,12 @@ function Map({city, offers, setActiveCard, className}: MapProps ): JSX.Element {
           .addTo(map);
       });
     }
-  }, [map, points, setActiveCard]);
+  }, [map, points, setActiveCard, city.location.latitude, city.location.longitude]);
 
   return (
     <section className={className}
-             style={{ height: '722px' }}
-             ref={mapRef}
+      style={{ height: '722px' }}
+      ref={mapRef}
     />
   );
 }

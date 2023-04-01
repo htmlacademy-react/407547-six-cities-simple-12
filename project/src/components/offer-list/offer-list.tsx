@@ -14,8 +14,8 @@ function OfferList(props: OfferListProps): JSX.Element {
     <div className={className}>
       {offers.map((currentValue: Offer) => (
         <Card key={randomId()}
-              offer={currentValue}
-              setActiveCard={setActiveCard}
+          offer={currentValue}
+          setActiveCard={setActiveCard}
         />
       ))}
     </div>

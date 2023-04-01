@@ -2,12 +2,12 @@ import Header from '../../components/header/header';
 import {Fragment, useState} from 'react';
 import OfferList from '../../components/offer-list/offer-list';
 import Map from '../../components/map/map';
-import LocationsList from "../../components/locations-list/locations-list";
-import {getLocation} from "../../utils";
-import {locations} from "../../const";
-import {City} from "../../types/offer";
-import {useAppSelector} from "../../hooks";
-import MainEmpty from "../main-empty/main-empty";
+import LocationsList from '../../components/locations-list/locations-list';
+import {getLocation} from '../../utils';
+import {locations} from '../../const';
+import {City} from '../../types/offer';
+import {useAppSelector} from '../../hooks';
+import MainEmpty from '../main-empty/main-empty';
 
 function Main(): JSX.Element {
   const [activeCard, setActiveCard] = useState< undefined | number >(undefined);
@@ -22,9 +22,7 @@ function Main(): JSX.Element {
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
-            <ul className="locations__list tabs__list">
-              <LocationsList/>
-            </ul>
+            <LocationsList/>
           </section>
         </div>
         <div className="cities">
@@ -50,20 +48,19 @@ function Main(): JSX.Element {
                 </form>
                 {
                   <OfferList offers = {offers}
-                             setActiveCard = {setActiveCard}
-                             className = {'cities__places-list places__list tabs__content'}
+                    setActiveCard = {setActiveCard}
+                    className = {'cities__places-list places__list tabs__content'}
                   />
                 }
               </section>
               <div className="cities__right-section">
                 <Map className='cities__map map'
-                     city = {city}
-                     offers = {offers}
-                     setActiveCard = {activeCard}
+                  city = {city}
+                  offers = {offers}
+                  setActiveCard = {activeCard}
                 />
               </div>
-            </div>
-          }
+            </div>}
         </div>
       </main>
     </Fragment>
