@@ -14,10 +14,6 @@ export const parseDate = (value: string) => {
   };
 };
 
-export const getOffersByCity = (city: string, offers: Offer[]) => {
-  return offers.filter(offer => offer.city.name === city)
-}
-
 export const getLocation = (city: string, locations: City[]) => {
   return locations.find(location => location.name === city)
 }
