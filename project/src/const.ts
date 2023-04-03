@@ -11,15 +11,13 @@ export enum OfferType {
 
 export const AVATAR_URL = 'https://i.pravatar.cc/128';
 
-export const URL_MARKER_DEFAULT =
-  'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg';
+export const URL_MARKER_DEFAULT = 'img/pin.svg';
 
-export const URL_MARKER_CURRENT =
-  'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/main-pin.svg';
+export const URL_MARKER_CURRENT = 'img/pin-active.svg';
 
 export const Cities: string[] = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
 
-export const locations = [
+export const Locations = [
   {
     name: 'Paris',
     location: {
@@ -69,3 +67,5 @@ export const locations = [
     }
   }
 ];
+
+export const Sorting: string[] = ['Popular', 'Price: low to high', 'Price: high to low', 'Top rated first'];
