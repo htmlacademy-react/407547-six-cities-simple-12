@@ -13,7 +13,7 @@ import SortOptions from '../../components/sort-options/sort-options';
 function Main(): JSX.Element {
   const [activeCard, setActiveCard] = useState< undefined | number >(undefined);
   const currentCity = useAppSelector((state) => state.city);
-  const offers = useAppSelector((state) => state.offers);
+  const offers = useAppSelector((state) => state.offersByCity);
   const city = getLocation(currentCity, Locations) as City;
 
   return (

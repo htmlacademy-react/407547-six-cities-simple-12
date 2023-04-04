@@ -16,7 +16,6 @@ function Room(): JSX.Element {
   const params = useParams();
   const offerId = params.id;
   const offer = offers.find((currentValue) => currentValue.id === Number(offerId)) as Offer;
-
   const [activeCard, setActiveCard] = useState<number | undefined>(undefined);
 
   //Goods
