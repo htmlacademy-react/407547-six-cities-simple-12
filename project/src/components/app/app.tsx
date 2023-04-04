@@ -4,21 +4,14 @@ import Page404 from '../../pages/page-404/page-404';
 import Login from '../../pages/login/login';
 import Room from '../../pages/room/room';
 import {AppRoute} from '../../const';
-import {AppProps} from '../../types/app-props';
 
-function App({count, offers, city}: AppProps): JSX.Element {
+function App(): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Root}
-          element={
-            <Main
-              count = {count}
-              offers = {offers}
-              city = {city}
-            />
-          }
+          element={<Main/>}
         />
         <Route
           path={AppRoute.Login}

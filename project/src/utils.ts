@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
+import {City} from './types/offer';
 export const randomId = () => uuidv4();
 export const getStarRating = (value: number) => Math.floor((value * 100) / 5);
 
@@ -12,3 +13,5 @@ export const parseDate = (value: string) => {
     day: date.toLocaleString(locale, {day: 'numeric'}),
   };
 };
+
+export const getLocation = (city: string, locations: City[]) => locations.find((location) => location.name === city);

@@ -6,10 +6,10 @@ import {getStarRating} from '../../utils';
 import {Offer} from '../../types/offer';
 import AddReview from '../../components/add-review/add-review';
 import {randomId} from '../../utils';
-import Map from "../../components/map/map";
-import OfferList from "../../components/offer-list/offer-list";
-import {useState} from "react";
-import ReviewList from "../../components/review-list/review-list";
+import Map from '../../components/map/map';
+import OfferList from '../../components/offer-list/offer-list';
+import {useState} from 'react';
+import ReviewList from '../../components/review-list/review-list';
 
 function Room(): JSX.Element {
   // Get the offerId param from the URL
@@ -50,7 +50,7 @@ function Room(): JSX.Element {
 
   //Get other places in the neighbourhood
   const offersNeighbourhood = offers.filter((currentValue) =>
-    currentValue.id !== offer.id && currentValue.city.name === offer.city.name)
+    currentValue.id !== offer.id && currentValue.city.name === offer.city.name);
 
   return (
     <div className="page">
@@ -127,8 +127,8 @@ function Room(): JSX.Element {
                 <div className="property__host-user user">
                   <div className={`property__avatar-wrapper ${offer.host.isPro ? 'property__avatar-wrapper--pro' : ''} user__avatar-wrapper`}>
                     <img className="property__avatar user__avatar"
-                         src={offer.host.avatarUrl} width="74" height="74"
-                         alt="Host avatar"
+                      src={offer.host.avatarUrl} width="74" height="74"
+                      alt="Host avatar"
                     />
                   </div>
                   <span className="property__user-name">
@@ -155,17 +155,18 @@ function Room(): JSX.Element {
             </div>
           </div>
           <Map city = {offer.city}
-               offers = {offers}
-               setActiveCard = {activeCard}
-               className = {'property__map map'}
+            offers = {offers}
+            setActiveCard = {activeCard}
+            className = {'property__map map'}
           />
         </section>
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
-              <OfferList offers = {offersNeighbourhood}
-                         setActiveCard = {setActiveCard}
-                         className = {'near-places__list places__list'} />
+            <OfferList offers = {offersNeighbourhood}
+              setActiveCard = {setActiveCard}
+              className = {'near-places__list places__list'}
+            />
           </section>
         </div>
       </main>
