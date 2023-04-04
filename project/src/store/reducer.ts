@@ -28,7 +28,7 @@ const reducer = createReducer(initialState, (builder) => {
       state.option = action.payload;
       switch (state.option) {
         case Sorting[0]:
-          state.offers = offers;
+          state.offers = offers.filter(offer => offer.city.name === state.city);
           break;
         case Sorting[1]:
           state.offers = [...offers].sort((prev, next) => prev.price - next.price);
@@ -40,7 +40,7 @@ const reducer = createReducer(initialState, (builder) => {
           state.offers = [...offers].sort((prev, next) => next.rating - prev.rating);
           break;
         default:
-          state.offers = offers;
+          state.offers = offers.filter(offer => offer.city.name === state.city);
           break;
       }
     });
