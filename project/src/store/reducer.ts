@@ -26,21 +26,22 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(changeOption, (state, action) => {
       state.option = action.payload;
+      const sortingOffers = [...offers];
       switch (state.option) {
         case Sorting[0]:
-          state.offers = offers.filter(offer => offer.city.name === state.city);
+          state.offers = sortingOffers;
           break;
         case Sorting[1]:
-          state.offers = [...offers].sort((prev, next) => prev.price - next.price);
+          state.offers = sortingOffers.sort((prev, next) => prev.price - next.price);
           break;
         case Sorting[2]:
-          state.offers = [...offers].sort((prev, next) => next.price - prev.price);
+          state.offers = sortingOffers.sort((prev, next) => next.price - prev.price);
           break;
         case Sorting[3]:
-          state.offers = [...offers].sort((prev, next) => next.rating - prev.rating);
+          state.offers = sortingOffers.sort((prev, next) => next.rating - prev.rating);
           break;
         default:
-          state.offers = offers.filter(offer => offer.city.name === state.city);
+          state.offers = sortingOffers;
           break;
       }
     });
