@@ -15,11 +15,6 @@ store.dispatch(fetchHotelAction());
 store.dispatch(checkAuthAction());
 
 function App(): JSX.Element {
-  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
-  const isOffersDataLoading = useAppSelector((state) => state.isOffersDataLoading);
-  if (authorizationStatus === AuthorizationStatus.Unknown || isOffersDataLoading) {
-    return <Loading/>;
-  }
   return (
     <HistoryRouter history={browserHistory}>
       <Routes>
