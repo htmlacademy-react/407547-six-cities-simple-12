@@ -72,4 +72,12 @@ export const Sorting: string[] = ['Popular', 'Price: low to high', 'Price: high 
 
 export enum APIRoute {
   Hotels = '/hotels',
+  Login = '/login',
+  Logout = '/logout',
+}
+
+export enum AuthorizationStatus {
+  Auth = 'AUTH',
+  NoAuth = 'NO_AUTH',
+  Unknown = 'UNKNOWN',
 }
