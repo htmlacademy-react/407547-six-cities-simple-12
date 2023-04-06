@@ -1,9 +1,9 @@
-import {loadOffers, setOffersDataLoadingStatus} from "./action";
-import {createAsyncThunk} from "@reduxjs/toolkit";
-import {AppDispatch, State} from "../types/state";
-import {APIRoute} from "../const";
-import {AxiosInstance} from "axios";
-import {Offer} from "../types/offer";
+import {loadOffers, setOffersDataLoadingStatus} from './action';
+import {createAsyncThunk} from '@reduxjs/toolkit';
+import {AppDispatch, State} from '../types/state';
+import {APIRoute} from '../const';
+import {AxiosInstance} from 'axios';
+import {Offer} from '../types/offer';
 
 export const fetchHotelAction = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch;

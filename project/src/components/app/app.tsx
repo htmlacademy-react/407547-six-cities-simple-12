@@ -4,17 +4,17 @@ import Page404 from '../../pages/page-404/page-404';
 import Login from '../../pages/login/login';
 import Room from '../../pages/room/room';
 import {AppRoute} from '../../const';
-import {fetchHotelAction} from "../../store/api-actions";
-import {store} from "../../store";
-import {useAppSelector} from "../../hooks";
-import Loading from "../loading/loading";
+import {fetchHotelAction} from '../../store/api-actions';
+import {store} from '../../store';
+import {useAppSelector} from '../../hooks';
+import Loading from '../loading/loading';
 
 store.dispatch(fetchHotelAction());
 
 function App(): JSX.Element {
   const isOffersDataLoading = useAppSelector((state) => state.isOffersDataLoading);
   if (isOffersDataLoading) {
-    return <Loading/>
+    return <Loading/>;
   }
   return (
     <BrowserRouter>

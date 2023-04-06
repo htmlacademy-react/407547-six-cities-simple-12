@@ -15,7 +15,7 @@ function LocationsList (): JSX.Element {
     if (target.tagName === 'SPAN') {
       dispatch(changeCity(target.innerHTML));
       dispatch(loadOffersByCity());
-      dispatch(changeOption(Sorting[0]))
+      dispatch(changeOption(Sorting[0]));
     }
   };
   const tabs = Cities.map((city: string) =>

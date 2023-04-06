@@ -26,13 +26,13 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(loadOffers, (state, action) => {
       state.offers = action.payload;
-      state.offersByCity = state.offers.filter(offer => offer.city.name === state.city)
+      state.offersByCity = state.offers.filter((offer) => offer.city.name === state.city);
     })
     .addCase(setOffersDataLoadingStatus, (state, action) => {
       state.isOffersDataLoading = action.payload;
     })
     .addCase(loadOffersByCity, (state) => {
-      state.offersByCity = state.offers.filter(offer => offer.city.name === state.city)
+      state.offersByCity = state.offers.filter((offer) => offer.city.name === state.city);
     })
     .addCase(changeOption, (state, action) => {
       state.option = action.payload;
@@ -53,7 +53,7 @@ const reducer = createReducer(initialState, (builder) => {
           state.offersByCity = state.offers.filter((offer) => offer.city.name === state.city);
           break;
       }
-    })
+    });
 });
 
 export {reducer};
