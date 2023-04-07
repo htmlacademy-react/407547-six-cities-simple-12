@@ -1,5 +1,7 @@
 import {
-  getUserInfo, loadComments, loadNearbyOffers,
+  getUserInfo,
+  loadComments,
+  loadNearbyOffers,
   loadOffer,
   loadOffers,
   redirectToRoute,
@@ -14,7 +16,7 @@ import {Offer, Review} from '../types/offer';
 import {dropToken, saveToken} from '../services/token';
 import {UserData} from '../types/user-data';
 import {AuthData} from '../types/auth-data';
-import {CommentData} from "../types/comment-data";
+import {CommentData} from '../types/comment-data';
 
 export const fetchHotelAction = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch;
@@ -41,10 +43,10 @@ export const fetchOfferByIdAction = createAsyncThunk<void, number, {
       const {data} = await api.get<Offer>(`${APIRoute.Hotels}/${id}`);
       dispatch(loadOffer(data));
     } catch (err) {
-      dispatch(loadOffer(undefined))
+      dispatch(loadOffer(undefined));
     }
   },
-)
+);
 
 export const fetchNearbyOffersAction = createAsyncThunk<void, number, {
   dispatch: AppDispatch;
@@ -57,10 +59,10 @@ export const fetchNearbyOffersAction = createAsyncThunk<void, number, {
       const {data} = await api.get<Offer[]>(`${APIRoute.Hotels}/${id}/nearby`);
       dispatch(loadNearbyOffers(data));
     } catch (err) {
-      dispatch(loadNearbyOffers([]))
+      dispatch(loadNearbyOffers([]));
     }
   },
-)
+);
 
 export const fetchCommentsOfferAction = createAsyncThunk<void, number, {
   dispatch: AppDispatch;
@@ -73,10 +75,10 @@ export const fetchCommentsOfferAction = createAsyncThunk<void, number, {
       const {data} = await api.get<Review[]>(`${APIRoute.Comments}/${id}`);
       dispatch(loadComments(data));
     } catch (err) {
-      dispatch(loadComments([]))
+      dispatch(loadComments([]));
     }
   },
-)
+);
 
 export const checkAuthAction = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch;
@@ -86,8 +88,9 @@ export const checkAuthAction = createAsyncThunk<void, undefined, {
   'user/checkAuth',
   async (_arg, {dispatch, extra: api}) => {
     try {
-      await api.get(APIRoute.Login);
+      const {data} = await api.get<UserData>(APIRoute.Login);
       dispatch(requireAuthorization(AuthorizationStatus.Auth));
+      dispatch(getUserInfo(data));
     } catch {
       dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
     }

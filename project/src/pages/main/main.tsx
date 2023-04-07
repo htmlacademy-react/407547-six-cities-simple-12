@@ -9,8 +9,8 @@ import {City} from '../../types/offer';
 import {useAppSelector} from '../../hooks';
 import MainEmpty from '../main-empty/main-empty';
 import SortOptions from '../../components/sort-options/sort-options';
-import Loading from "../../components/loading/loading";
-import cn from "classnames";
+import Loading from '../../components/loading/loading';
+import cn from 'classnames';
 
 function Main(): JSX.Element {
   const [activeCard, setActiveCard] = useState< undefined | number >(undefined);

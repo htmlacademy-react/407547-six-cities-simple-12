@@ -4,7 +4,7 @@ import {randomId} from '../../utils';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {changeCity, changeOption, loadOffersByCity} from '../../store/action';
 import {NavLink} from 'react-router-dom';
-import cn from "classnames";
+import cn from 'classnames';
 
 function LocationsList (): JSX.Element {
   const selectedCity = useAppSelector((state) => state.city);
@@ -26,7 +26,7 @@ function LocationsList (): JSX.Element {
         onClick={handleChangeCity}
       >
         <NavLink to={'/'}
-          className=  {cn(
+          className= {cn(
             'locations__item-link tabs__item', {
               'tabs__item--active': selectedCity === city
             })}

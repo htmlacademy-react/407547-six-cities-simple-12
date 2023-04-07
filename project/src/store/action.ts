@@ -17,7 +17,7 @@ export const redirectToRoute = createAction<AppRoute>('offers/redirectToRoute');
 
 export const getUserInfo = createAction<UserData>('user/getUserInfo');
 
-export const loadOffer = createAction<Offer | undefined>('data/loadOffer')
+export const loadOffer = createAction<Offer | undefined>('data/loadOffer');
 
 export const loadNearbyOffers = createAction<Offer[]>('data/loadNearbyOffers');
 

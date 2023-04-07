@@ -1,13 +1,13 @@
 import {ChangeEvent, FormEvent, useEffect, useState} from 'react';
-import {postOfferCommentAction} from "../../store/api-actions";
-import {CommentData} from "../../types/comment-data";
-import {useAppDispatch} from "../../hooks";
+import {postOfferCommentAction} from '../../store/api-actions';
+import {CommentData} from '../../types/comment-data';
+import {useAppDispatch} from '../../hooks';
 
 type AddReviewProps = {
-  offerId: number
+  offerId: number;
 }
 function AddReview(props: AddReviewProps): JSX.Element {
-  const {offerId} = props
+  const {offerId} = props;
   const [isDisabled, setDisabled] = useState(true);
   const [rating, setRating] = useState('');
   const [review, setReview] = useState('');
@@ -36,7 +36,7 @@ function AddReview(props: AddReviewProps): JSX.Element {
       id: offerId,
       comment: review,
       rating: Number(rating)
-    })
+    });
     setDisabled(true);
     setRating('');
     setReview('');
@@ -44,19 +44,19 @@ function AddReview(props: AddReviewProps): JSX.Element {
 
   return (
     <form className="reviews__form form"
-          action="#"
-          method="post"
-          onSubmit={submitHandler}
+      action="#"
+      method="post"
+      onSubmit={submitHandler}
     >
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating">
         <input className="form__rating-input visually-hidden"
-               name="rating"
-               value="5"
-               id="5-stars"
-               type="radio"
-               onChange={ratingChangeHandler}
-               checked={rating === '5'}
+          name="rating"
+          value="5"
+          id="5-stars"
+          type="radio"
+          onChange={ratingChangeHandler}
+          checked={rating === '5'}
         />
         <label htmlFor="5-stars" className="reviews__rating-label form__rating-label" title="perfect">
           <svg className="form__star-image" width="37" height="33">
@@ -65,12 +65,12 @@ function AddReview(props: AddReviewProps): JSX.Element {
         </label>
 
         <input className="form__rating-input visually-hidden"
-               name="rating"
-               value="4"
-               id="4-stars"
-               type="radio"
-               onChange={ratingChangeHandler}
-               checked={rating === '4'}
+          name="rating"
+          value="4"
+          id="4-stars"
+          type="radio"
+          onChange={ratingChangeHandler}
+          checked={rating === '4'}
         />
         <label htmlFor="4-stars" className="reviews__rating-label form__rating-label" title="good">
           <svg className="form__star-image" width="37" height="33">
@@ -79,12 +79,12 @@ function AddReview(props: AddReviewProps): JSX.Element {
         </label>
 
         <input className="form__rating-input visually-hidden"
-               name="rating"
-               value="3"
-               id="3-stars"
-               type="radio"
-               onChange={ratingChangeHandler}
-               checked={rating === '3'}
+          name="rating"
+          value="3"
+          id="3-stars"
+          type="radio"
+          onChange={ratingChangeHandler}
+          checked={rating === '3'}
         />
         <label htmlFor="3-stars" className="reviews__rating-label form__rating-label" title="not bad">
           <svg className="form__star-image" width="37" height="33">
@@ -93,12 +93,12 @@ function AddReview(props: AddReviewProps): JSX.Element {
         </label>
 
         <input className="form__rating-input visually-hidden"
-               name="rating"
-               value="2"
-               id="2-stars"
-               type="radio"
-               onChange={ratingChangeHandler}
-               checked={rating === '2'}
+          name="rating"
+          value="2"
+          id="2-stars"
+          type="radio"
+          onChange={ratingChangeHandler}
+          checked={rating === '2'}
         />
         <label htmlFor="2-stars" className="reviews__rating-label form__rating-label" title="badly">
           <svg className="form__star-image" width="37" height="33">
@@ -107,12 +107,12 @@ function AddReview(props: AddReviewProps): JSX.Element {
         </label>
 
         <input className="form__rating-input visually-hidden"
-               name="rating"
-               value="1"
-               id="1-star"
-               type="radio"
-               onChange={ratingChangeHandler}
-               checked={rating === '1'}
+          name="rating"
+          value="1"
+          id="1-star"
+          type="radio"
+          onChange={ratingChangeHandler}
+          checked={rating === '1'}
         />
         <label htmlFor="1-star" className="reviews__rating-label form__rating-label" title="terribly">
           <svg className="form__star-image" width="37" height="33">
@@ -121,11 +121,11 @@ function AddReview(props: AddReviewProps): JSX.Element {
         </label>
       </div>
       <textarea className="reviews__textarea form__textarea"
-                id="review"
-                name="review"
-                placeholder="Tell how was your stay, what you like and what can be improved"
-                onChange={reviewChangeHandler}
-                value={review}
+        id="review"
+        name="review"
+        placeholder="Tell how was your stay, what you like and what can be improved"
+        onChange={reviewChangeHandler}
+        value={review}
       >
       </textarea>
       <div className="reviews__button-wrapper">
@@ -134,8 +134,8 @@ function AddReview(props: AddReviewProps): JSX.Element {
           your stay with at least <b className="reviews__text-amount">50 characters</b>.
         </p>
         <button className="reviews__submit form__submit button"
-                type="submit"
-                disabled={isDisabled}
+          type="submit"
+          disabled={isDisabled}
         >
           Submit
         </button>

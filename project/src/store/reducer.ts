@@ -1,7 +1,11 @@
 import {createReducer} from '@reduxjs/toolkit';
 import {
   changeCity,
-  changeOption, getUserInfo, loadComments, loadNearbyOffers, loadOffer,
+  changeOption,
+  getUserInfo,
+  loadComments,
+  loadNearbyOffers,
+  loadOffer,
   loadOffers,
   loadOffersByCity,
   requireAuthorization,
@@ -14,9 +18,9 @@ import {UserData} from '../types/user-data';
 type initialStateType = {
   city: string;
   offers: Offer[];
-  offer: Offer | undefined | null,
-  nearbyOffers: Offer[],
-  offerComments: Review[],
+  offer: Offer | undefined | null;
+  nearbyOffers: Offer[];
+  offerComments: Review[];
   isOffersDataLoading: boolean;
   option: string;
   offersByCity: Offer[];

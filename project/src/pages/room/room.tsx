@@ -7,23 +7,23 @@ import Map from '../../components/map/map';
 import OfferList from '../../components/offer-list/offer-list';
 import {useEffect, useState} from 'react';
 import ReviewList from '../../components/review-list/review-list';
-import {useAppDispatch, useAppSelector} from "../../hooks";
-import {fetchCommentsOfferAction, fetchNearbyOffersAction, fetchOfferByIdAction} from "../../store/api-actions";
-import Loading from "../../components/loading/loading";
-import Page404 from "../page-404/page-404";
-import cn from "classnames";
-import {AuthorizationStatus} from "../../const";
+import {useAppDispatch, useAppSelector} from '../../hooks';
+import {fetchCommentsOfferAction, fetchNearbyOffersAction, fetchOfferByIdAction} from '../../store/api-actions';
+import Loading from '../../components/loading/loading';
+import Page404 from '../page-404/page-404';
+import cn from 'classnames';
+import {AuthorizationStatus} from '../../const';
 
 function Room(): JSX.Element {
   // Get the offerId param from the URL
   const params = useParams();
   const offerId = Number(params.id);
 
-  const offer = useAppSelector(state => state.offer);
-  const offersNeighbourhood = useAppSelector(state => state.nearbyOffers);
-  const offerReviews =  useAppSelector(state => state.offerComments);
+  const offer = useAppSelector((state) => state.offer);
+  const offersNeighbourhood = useAppSelector((state) => state.nearbyOffers);
+  const offerReviews = useAppSelector((state) => state.offerComments);
 
-  const authorizationStatus = useAppSelector(state => state.authorizationStatus);
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
 
   const dispatch = useAppDispatch();
 
@@ -33,14 +33,14 @@ function Room(): JSX.Element {
     dispatch(fetchOfferByIdAction(offerId));
     dispatch(fetchNearbyOffersAction(offerId));
     dispatch(fetchCommentsOfferAction(offerId));
-  }, [offerId]);
+  }, [offerId, dispatch]);
 
   if (offer === undefined) {
-    return <Page404/>
+    return <Page404/>;
   }
 
   if (!offer) {
-    return <Loading/>
+    return <Loading/>;
   }
   //Goods
   const generateGoods = () => {
