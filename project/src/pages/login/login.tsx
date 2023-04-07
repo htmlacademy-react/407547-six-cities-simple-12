@@ -1,4 +1,4 @@
-import {FormEvent, useEffect, useRef, useState} from 'react';
+import {FormEvent, useEffect, useRef} from 'react';
 import {AuthData} from '../../types/auth-data';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {loginAction} from '../../store/api-actions';
@@ -88,7 +88,7 @@ function Login(): JSX.Element {
                   type="password"
                   name="password"
                   minLength={2}
-                  pattern="(?=.*\d)(?=.*[a-z]).{2,}"
+                  pattern="(?=.*\d)(?=.*[a-zA-Z]).{2,}"
                   ref={passwordRef}
                   placeholder="Password"
                   required
