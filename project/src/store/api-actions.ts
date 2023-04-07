@@ -14,6 +14,7 @@ import {Offer, Review} from '../types/offer';
 import {dropToken, saveToken} from '../services/token';
 import {UserData} from '../types/user-data';
 import {AuthData} from '../types/auth-data';
+import {CommentData} from "../types/comment-data";
 
 export const fetchHotelAction = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch;
@@ -118,5 +119,16 @@ export const logoutAction = createAsyncThunk<void, undefined, {
     await api.delete(APIRoute.Logout);
     dropToken();
     dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
+  },
+);
+export const postOfferCommentAction = createAsyncThunk<void, CommentData, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'user/comment',
+  async ({id, comment, rating}, {dispatch, extra: api}) => {
+    const {data} = await api.post<Review[]>(`${APIRoute.Comments}/${id}`, {comment, rating});
+    dispatch(loadComments(data));
   },
 );

@@ -11,6 +11,8 @@ import {useAppDispatch, useAppSelector} from "../../hooks";
 import {fetchCommentsOfferAction, fetchNearbyOffersAction, fetchOfferByIdAction} from "../../store/api-actions";
 import Loading from "../../components/loading/loading";
 import Page404 from "../page-404/page-404";
+import cn from "classnames";
+import {AuthorizationStatus} from "../../const";
 
 function Room(): JSX.Element {
   // Get the offerId param from the URL
@@ -20,6 +22,8 @@ function Room(): JSX.Element {
   const offer = useAppSelector(state => state.offer);
   const offersNeighbourhood = useAppSelector(state => state.nearbyOffers);
   const offerReviews =  useAppSelector(state => state.offerComments);
+
+  const authorizationStatus = useAppSelector(state => state.authorizationStatus);
 
   const dispatch = useAppDispatch();
 
@@ -138,7 +142,12 @@ function Room(): JSX.Element {
               <div className="property__host">
                 <h2 className="property__host-title">Meet the host</h2>
                 <div className="property__host-user user">
-                  <div className={`property__avatar-wrapper ${offer.host.isPro ? 'property__avatar-wrapper--pro' : ''} user__avatar-wrapper`}>
+                  <div className={cn(
+                    'property__avatar-wrapper',
+                    'user__avatar-wrapper', {
+                      'property__avatar-wrapper--pro': offer.host.isPro
+                    })}
+                  >
                     <img className="property__avatar user__avatar"
                       src={offer.host.avatarUrl} width="74" height="74"
                       alt="Host avatar"
@@ -163,7 +172,7 @@ function Room(): JSX.Element {
               <section className="property__reviews reviews">
                 <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{offerReviews.length}</span></h2>
                 <ReviewList reviews = {offerReviews}/>
-                <AddReview/>
+                {authorizationStatus === AuthorizationStatus.Auth && <AddReview offerId = {offerId}/>}
               </section>
             </div>
           </div>
