@@ -30,8 +30,6 @@ function AddReview(props: AddReviewProps): JSX.Element {
   const onSubmit = (value: CommentData) => {
     dispatch(postOfferCommentAction(value));
   };
-
-
   const submitHandler = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     onSubmit({

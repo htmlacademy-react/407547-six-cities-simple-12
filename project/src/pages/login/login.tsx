@@ -1,13 +1,24 @@
-import {FormEvent, useRef} from 'react';
+import {FormEvent, useEffect, useRef, useState} from 'react';
 import {AuthData} from '../../types/auth-data';
-import {useAppDispatch} from '../../hooks';
+import {useAppDispatch, useAppSelector} from '../../hooks';
 import {loginAction} from '../../store/api-actions';
 import Logo from '../../components/logo/logo';
+import {useNavigate} from "react-router-dom";
+import {AppRoute, AuthorizationStatus} from "../../const";
 
 function Login(): JSX.Element {
+  const authorizationStatus = useAppSelector(state => state.authorizationStatus);
   const loginRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (authorizationStatus === AuthorizationStatus.Auth) {
+      navigate(AppRoute.Root)
+    }
+  }, [authorizationStatus])
+
   const onSubmit = (authData: AuthData) => {
     dispatch(loginAction(authData));
   };
@@ -76,6 +87,8 @@ function Login(): JSX.Element {
                   className="login__input form__input"
                   type="password"
                   name="password"
+                  minLength={2}
+                  pattern="(?=.*\d)(?=.*[a-z]).{2,}"
                   ref={passwordRef}
                   placeholder="Password"
                   required
