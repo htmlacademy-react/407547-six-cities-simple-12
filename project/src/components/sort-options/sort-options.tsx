@@ -3,12 +3,12 @@ import {Sorting} from '../../const';
 import {randomId} from '../../utils';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {changeOption} from '../../store/action';
+import cn from 'classnames';
 
 function SortOptions(): JSX.Element {
   const [isOpened, setOpened] = useState(false);
   const selectedOption = useAppSelector((state) => state.option);
   const dispatch = useAppDispatch();
-  const setClasses = (option: string) => `places__option ${selectedOption === option ? 'places__option--active' : ''}`;
   const handleOnClick = (evt: MouseEvent) => {
     setOpened(!isOpened);
     const target = evt.target as HTMLLIElement;
@@ -19,7 +19,10 @@ function SortOptions(): JSX.Element {
   };
   const options = Sorting.map((option) => (
     <li
-      className={setClasses(option)}
+      className={cn(
+        'places__option', {
+          'places__option--active': selectedOption === option
+        })}
       key={randomId()}
       tabIndex={0}
       data-option={option}
@@ -37,7 +40,11 @@ function SortOptions(): JSX.Element {
           <use xlinkHref="#icon-arrow-select"></use>
         </svg>
       </span>
-      <ul className={`places__options places__options--custom ${isOpened ? 'places__options--opened' : ''}`}>
+      <ul className={cn(
+        'places__options places__options--custom', {
+          'places__options--opened': isOpened
+        })}
+      >
         {options}
       </ul>
     </form>

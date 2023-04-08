@@ -1,8 +1,8 @@
-import {Cities} from '../../const';
+import {Cities, Sorting} from '../../const';
 import {MouseEvent} from 'react';
 import {randomId} from '../../utils';
 import {useAppDispatch, useAppSelector} from '../../hooks';
-import {changeCity, loadOffers} from '../../store/action';
+import {changeCity, changeOption, loadOffersByCity} from '../../store/action';
 import {NavLink} from 'react-router-dom';
 
 function LocationsList (): JSX.Element {
@@ -14,7 +14,8 @@ function LocationsList (): JSX.Element {
     const target = evt.target as HTMLLIElement;
     if (target.tagName === 'SPAN') {
       dispatch(changeCity(target.innerHTML));
-      dispatch(loadOffers());
+      dispatch(loadOffersByCity());
+      dispatch(changeOption(Sorting[0]));
     }
   };
   const tabs = Cities.map((city: string) =>
