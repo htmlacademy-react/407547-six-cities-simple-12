@@ -5,9 +5,10 @@ import {loginAction} from '../../store/api-actions';
 import Logo from '../../components/logo/logo';
 import {useNavigate} from 'react-router-dom';
 import {AppRoute, AuthorizationStatus} from '../../const';
+import {getAuthorizationStatus} from "../../store/user-process/selectors";
 
 function Login(): JSX.Element {
-  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
   const loginRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
   const dispatch = useAppDispatch();

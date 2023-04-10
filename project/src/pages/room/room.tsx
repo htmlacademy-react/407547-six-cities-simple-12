@@ -13,17 +13,19 @@ import Loading from '../../components/loading/loading';
 import Page404 from '../page-404/page-404';
 import cn from 'classnames';
 import {AuthorizationStatus} from '../../const';
+import {getNearbyOffers, getOffer, getOfferComments} from "../../store/offers-data/selectors";
+import {getAuthorizationStatus} from "../../store/user-process/selectors";
 
 function Room(): JSX.Element {
   // Get the offerId param from the URL
   const params = useParams();
   const offerId = Number(params.id);
 
-  const offer = useAppSelector((state) => state.offer);
-  const offersNeighbourhood = useAppSelector((state) => state.nearbyOffers);
-  const offerReviews = useAppSelector((state) => state.offerComments);
+  const offer = useAppSelector(getOffer);
+  const offersNeighbourhood = useAppSelector(getNearbyOffers);
+  const offerReviews = useAppSelector(getOfferComments);
 
-  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
 
   const dispatch = useAppDispatch();
 

@@ -2,12 +2,15 @@ import {MouseEvent, useState} from 'react';
 import {Sorting} from '../../const';
 import {randomId} from '../../utils';
 import {useAppDispatch, useAppSelector} from '../../hooks';
-import {changeOption} from '../../store/action';
+import {changeOption} from '../../store/offers-data/offers-data';
 import cn from 'classnames';
+import {getOption} from "../../store/offers-data/selectors";
+
 
 function SortOptions(): JSX.Element {
   const [isOpened, setOpened] = useState(false);
-  const selectedOption = useAppSelector((state) => state.option);
+  const selectedOption = useAppSelector(getOption);
+
   const dispatch = useAppDispatch();
   const handleOnClick = (evt: MouseEvent) => {
     setOpened(!isOpened);
