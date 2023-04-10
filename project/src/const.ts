@@ -78,6 +78,5 @@ export enum AuthorizationStatus {
 
 export enum NameSpace {
   Data = 'DATA',
-  Offers = 'OFFERS',
   User = 'USER'
 }

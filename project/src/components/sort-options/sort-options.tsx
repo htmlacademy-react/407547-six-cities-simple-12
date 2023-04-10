@@ -4,7 +4,7 @@ import {randomId} from '../../utils';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {changeOption} from '../../store/offers-data/offers-data';
 import cn from 'classnames';
-import {getOption} from "../../store/offers-data/selectors";
+import {getOption} from '../../store/offers-data/selectors';
 
 
 function SortOptions(): JSX.Element {

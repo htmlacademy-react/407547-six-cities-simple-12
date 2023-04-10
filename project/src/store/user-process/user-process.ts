@@ -1,7 +1,7 @@
-import {AuthorizationStatus, NameSpace} from "../../const";
-import {createSlice} from "@reduxjs/toolkit";
-import {checkAuthAction, loginAction, logoutAction} from "../api-actions";
-import {UserData} from "../../types/user-data";
+import {AuthorizationStatus, NameSpace} from '../../const';
+import {createSlice} from '@reduxjs/toolkit';
+import {checkAuthAction, loginAction, logoutAction} from '../api-actions';
+import {UserData} from '../../types/user-data';
 
 type initialStateType = {
   authorizationStatus: AuthorizationStatus;

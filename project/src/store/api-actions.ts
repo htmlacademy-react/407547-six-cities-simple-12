@@ -17,7 +17,7 @@ export const fetchHotelAction = createAsyncThunk<Offer[], undefined, {
   'data/fetchHotel',
   async (_arg, {dispatch, extra: api}) => {
     const {data} = await api.get<Offer[]>(APIRoute.Hotels);
-    return data
+    return data;
   },
 );
 
@@ -76,8 +76,8 @@ export const checkAuthAction = createAsyncThunk<UserData, undefined, {
 }>(
   'user/checkAuth',
   async (_arg, {dispatch, extra: api}) => {
-      const {data} = await api.get<UserData>(APIRoute.Login);
-      return data;
+    const {data} = await api.get<UserData>(APIRoute.Login);
+    return data;
   },
 );
 

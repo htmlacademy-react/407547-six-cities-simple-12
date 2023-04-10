@@ -2,7 +2,7 @@ import UserLogged from '../user-logged/user-logged';
 import {useAppSelector} from '../../hooks';
 import {AuthorizationStatus} from '../../const';
 import UserNotLogged from '../user-not-logged/user-not-logged';
-import {getAuthorizationStatus, getUserInfo} from "../../store/user-process/selectors";
+import {getAuthorizationStatus, getUserInfo} from '../../store/user-process/selectors';
 
 function HeaderNav(): JSX.Element {
   const authorizationStatus = useAppSelector(getAuthorizationStatus);

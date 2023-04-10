@@ -1,11 +1,12 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {Cities, NameSpace, Sorting} from "../../const";
-import {Offer, Review} from "../../types/offer";
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {Cities, NameSpace, Sorting} from '../../const';
+import {Offer, Review} from '../../types/offer';
 import {
   fetchCommentsOfferAction,
   fetchHotelAction,
   fetchNearbyOffersAction,
-  fetchOfferByIdAction, postOfferCommentAction
+  fetchOfferByIdAction,
+  postOfferCommentAction
 } from '../api-actions';
 
 type initialStateType = {
@@ -34,13 +35,13 @@ export const offersData = createSlice({
   name: NameSpace.Data,
   initialState,
   reducers: {
-    changeCity: (state, action) => {
+    changeCity: (state, action: PayloadAction <string>) => {
       state.city = action.payload;
     },
     loadOffersByCity: (state ) => {
       state.offersByCity = state.offers.filter((offer) => offer.city.name === state.city);
     },
-    changeOption: (state, action) => {
+    changeOption: (state, action: PayloadAction <string>) => {
       const option = action.payload;
       switch (option) {
         case Sorting[0]:
@@ -68,6 +69,7 @@ export const offersData = createSlice({
       })
       .addCase(fetchHotelAction.fulfilled, (state, action) => {
         state.offers = action.payload;
+        state.offersByCity = state.offers.filter((offer) => offer.city.name === state.city);
         state.isOffersDataLoading = false;
       })
       .addCase(fetchOfferByIdAction.fulfilled, (state, action) => {
@@ -83,6 +85,6 @@ export const offersData = createSlice({
         state.offerComments = action.payload;
       });
   }
-})
+});
 
 export const {changeCity, loadOffersByCity, changeOption} = offersData.actions;

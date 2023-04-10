@@ -5,7 +5,7 @@ import {loginAction} from '../../store/api-actions';
 import Logo from '../../components/logo/logo';
 import {useNavigate} from 'react-router-dom';
 import {AppRoute, AuthorizationStatus} from '../../const';
-import {getAuthorizationStatus} from "../../store/user-process/selectors";
+import {getAuthorizationStatus} from '../../store/user-process/selectors';
 
 function Login(): JSX.Element {
   const authorizationStatus = useAppSelector(getAuthorizationStatus);

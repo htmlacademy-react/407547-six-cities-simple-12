@@ -13,8 +13,8 @@ import Loading from '../../components/loading/loading';
 import Page404 from '../page-404/page-404';
 import cn from 'classnames';
 import {AuthorizationStatus} from '../../const';
-import {getNearbyOffers, getOffer, getOfferComments} from "../../store/offers-data/selectors";
-import {getAuthorizationStatus} from "../../store/user-process/selectors";
+import {getNearbyOffers, getOffer, getOfferComments} from '../../store/offers-data/selectors';
+import {getAuthorizationStatus} from '../../store/user-process/selectors';
 
 function Room(): JSX.Element {
   // Get the offerId param from the URL

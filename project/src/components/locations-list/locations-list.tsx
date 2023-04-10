@@ -5,7 +5,7 @@ import {useAppDispatch, useAppSelector} from '../../hooks';
 import {changeCity, changeOption, loadOffersByCity} from '../../store/offers-data/offers-data';
 import {NavLink} from 'react-router-dom';
 import cn from 'classnames';
-import {getCity} from "../../store/offers-data/selectors";
+import {getCity} from '../../store/offers-data/selectors';
 
 function LocationsList (): JSX.Element {
   const selectedCity = useAppSelector(getCity);

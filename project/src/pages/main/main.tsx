@@ -6,15 +6,14 @@ import LocationsList from '../../components/locations-list/locations-list';
 import {getLocation} from '../../utils';
 import {AuthorizationStatus, Locations} from '../../const';
 import {City} from '../../types/offer';
-import {useAppDispatch, useAppSelector} from '../../hooks';
+import {useAppSelector} from '../../hooks';
 import MainEmpty from '../main-empty/main-empty';
 import SortOptions from '../../components/sort-options/sort-options';
 import Loading from '../../components/loading/loading';
 import cn from 'classnames';
-import {getCity, getOffersDataLoading} from "../../store/offers-data/selectors";
-import {getOffersByCity} from "../../store/offers-data/selectors";
-import {getAuthorizationStatus} from "../../store/user-process/selectors";
-import {loadOffersByCity} from "../../store/offers-data/offers-data";
+import {getCity, getOffersDataLoading} from '../../store/offers-data/selectors';
+import {getOffersByCity} from '../../store/offers-data/selectors';
+import {getAuthorizationStatus} from '../../store/user-process/selectors';
 
 function Main(): JSX.Element {
   const [activeCard, setActiveCard] = useState< undefined | number >(undefined);
