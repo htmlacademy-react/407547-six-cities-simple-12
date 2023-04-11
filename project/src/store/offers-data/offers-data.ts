@@ -42,8 +42,8 @@ export const offersData = createSlice({
       state.offersByCity = state.offers.filter((offer) => offer.city.name === state.city);
     },
     changeOption: (state, action: PayloadAction <string>) => {
-      const option = action.payload;
-      switch (option) {
+      state.option = action.payload;
+      switch (state.option) {
         case Sorting[0]:
           state.offersByCity = state.offers.filter((offer) => offer.city.name === state.city);
           break;

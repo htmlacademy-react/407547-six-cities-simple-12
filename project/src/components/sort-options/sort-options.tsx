@@ -1,4 +1,4 @@
-import {MouseEvent, useState} from 'react';
+import {memo, MouseEvent, useState} from 'react';
 import {Sorting} from '../../const';
 import {randomId} from '../../utils';
 import {useAppDispatch, useAppSelector} from '../../hooks';
@@ -54,4 +54,4 @@ function SortOptions(): JSX.Element {
   );
 }
 
-export default SortOptions;
+export default memo(SortOptions);
