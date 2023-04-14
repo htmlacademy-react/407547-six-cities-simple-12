@@ -1,7 +1,15 @@
 import {createReducer} from '@reduxjs/toolkit';
-import {changeCity, changeOption, loadOffers, loadOffersByCity, setOffersDataLoadingStatus} from './action';
+import {
+  changeCity,
+  changeOption, getUserInfo,
+  loadOffers,
+  loadOffersByCity,
+  requireAuthorization,
+  setOffersDataLoadingStatus
+} from './action';
 import {Offer} from '../types/offer';
-import {Cities, Sorting} from '../const';
+import {AuthorizationStatus, Cities, Sorting} from '../const';
+import {UserData} from '../types/user-data';
 
 type initialStateType = {
   city: string;
@@ -9,6 +17,8 @@ type initialStateType = {
   isOffersDataLoading: boolean;
   option: string;
   offersByCity: Offer[];
+  authorizationStatus: AuthorizationStatus;
+  userInfo: UserData | null;
 }
 
 const initialState: initialStateType = {
@@ -16,7 +26,9 @@ const initialState: initialStateType = {
   offers: [],
   isOffersDataLoading: false,
   option: Sorting[0],
-  offersByCity: []
+  offersByCity: [],
+  authorizationStatus: AuthorizationStatus.Unknown,
+  userInfo: null
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -53,6 +65,12 @@ const reducer = createReducer(initialState, (builder) => {
           state.offersByCity = state.offers.filter((offer) => offer.city.name === state.city);
           break;
       }
+    })
+    .addCase(requireAuthorization, (state, action) => {
+      state.authorizationStatus = action.payload;
+    })
+    .addCase(getUserInfo, (state, action) => {
+      state.userInfo = action.payload;
     });
 });
 

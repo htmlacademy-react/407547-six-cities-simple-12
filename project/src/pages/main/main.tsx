@@ -18,7 +18,7 @@ function Main(): JSX.Element {
 
   return (
     <Fragment>
-      <Header/>
+      {<Header />}
       <main className={`page__main page__main--index ${offers.length === 0 ? 'page__main--index-empty' : ''}`}>
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
