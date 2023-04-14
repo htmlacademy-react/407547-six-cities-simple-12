@@ -23,8 +23,10 @@ function AddReview(props: AddReviewProps): JSX.Element {
   };
 
   useEffect(() => {
-    if (rating && review.trim().length > 50) {
+    if (rating && (review.trim().length > 50 && review.trim().length < 300)) {
       setDisabled(false);
+    } else {
+      setDisabled(true);
     }
 
   }, [review, rating, isDisabled]);

@@ -2,29 +2,20 @@ import Header from '../../components/header/header';
 import {Fragment, useState} from 'react';
 import LocationsList from '../../components/locations-list/locations-list';
 import {getLocation} from '../../utils';
-import {AuthorizationStatus, Locations} from '../../const';
-import {City} from '../../types/offer';
+import {Locations} from '../../const';
+import {City, Offer} from '../../types/offer';
 import {useAppSelector} from '../../hooks';
 import MainEmpty from '../main-empty/main-empty';
-import Loading from '../../components/loading/loading';
 import cn from 'classnames';
-import {getCity, getOffersDataLoading} from '../../store/offers-data/selectors';
+import {getCity} from '../../store/offers-data/selectors';
 import {getOffersByCity} from '../../store/offers-data/selectors';
-import {getAuthorizationStatus} from '../../store/user-process/selectors';
-import MainNotEmpty from "../main-not-empty/main-not-empty";
+import MainNotEmpty from '../main-not-empty/main-not-empty';
 
 function Main(): JSX.Element {
-  const [activeCard, setActiveCard] = useState< undefined | number >(undefined);
+  const [activeCard, setActiveCard] = useState< Offer | undefined >(undefined);
   const currentCity = useAppSelector(getCity);
   const offers = useAppSelector(getOffersByCity);
   const city = getLocation(currentCity, Locations) as City;
-
-  const authorizationStatus = useAppSelector(getAuthorizationStatus);
-  const isOffersDataLoading = useAppSelector(getOffersDataLoading);
-
-  if (authorizationStatus === AuthorizationStatus.Unknown || isOffersDataLoading) {
-    return <Loading/>;
-  }
 
   return (
     <Fragment>
@@ -43,13 +34,13 @@ function Main(): JSX.Element {
         <div className="cities">
           {
             offers.length === 0 ?
-            <MainEmpty currentCity = {currentCity}/> :
-            <MainNotEmpty offers={offers}
-                          currentCity={currentCity}
-                          setActiveCard={setActiveCard}
-                          city={city}
-                          activeCard={activeCard}
-            />
+              <MainEmpty currentCity = {currentCity}/> :
+              <MainNotEmpty offers={offers}
+                currentCity={currentCity}
+                setActiveCard={setActiveCard}
+                city={city}
+                activeCard={activeCard}
+              />
           }
         </div>
       </main>
