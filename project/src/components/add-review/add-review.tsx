@@ -1,23 +1,47 @@
-import {ChangeEvent, FormEvent, useState} from 'react';
+import {ChangeEvent, FormEvent, useEffect, useState} from 'react';
+import {postOfferCommentAction} from '../../store/api-actions';
+import {CommentData} from '../../types/comment-data';
+import {useAppDispatch} from '../../hooks';
 
-function AddReview(): JSX.Element {
+type AddReviewProps = {
+  offerId: number;
+}
+function AddReview(props: AddReviewProps): JSX.Element {
+  const {offerId} = props;
   const [isDisabled, setDisabled] = useState(true);
   const [rating, setRating] = useState('');
   const [review, setReview] = useState('');
+  const dispatch = useAppDispatch();
 
   const ratingChangeHandler = (evt: ChangeEvent<HTMLInputElement>) => {
     setRating(evt.target.value);
   };
   const reviewChangeHandler = (evt: ChangeEvent<HTMLTextAreaElement>) => {
-    setReview(evt.target.value.trim());
-    setDisabled(false);
+    setReview(evt.target.value);
+  };
+
+  useEffect(() => {
+    if (rating && review.trim().length > 50) {
+      setDisabled(false);
+    }
+
+  }, [review, rating, isDisabled]);
+
+  const onSubmit = (value: CommentData) => {
+    dispatch(postOfferCommentAction(value));
   };
   const submitHandler = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
+    onSubmit({
+      id: offerId,
+      comment: review,
+      rating: Number(rating)
+    });
     setDisabled(true);
     setRating('');
     setReview('');
   };
+
   return (
     <form className="reviews__form form"
       action="#"

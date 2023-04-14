@@ -4,11 +4,13 @@ import OfferList from '../../components/offer-list/offer-list';
 import Map from '../../components/map/map';
 import LocationsList from '../../components/locations-list/locations-list';
 import {getLocation} from '../../utils';
-import {Locations} from '../../const';
+import {AuthorizationStatus, Locations} from '../../const';
 import {City} from '../../types/offer';
 import {useAppSelector} from '../../hooks';
 import MainEmpty from '../main-empty/main-empty';
 import SortOptions from '../../components/sort-options/sort-options';
+import Loading from '../../components/loading/loading';
+import cn from 'classnames';
 
 function Main(): JSX.Element {
   const [activeCard, setActiveCard] = useState< undefined | number >(undefined);
@@ -16,10 +18,21 @@ function Main(): JSX.Element {
   const offers = useAppSelector((state) => state.offersByCity);
   const city = getLocation(currentCity, Locations) as City;
 
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+  const isOffersDataLoading = useAppSelector((state) => state.isOffersDataLoading);
+
+  if (authorizationStatus === AuthorizationStatus.Unknown || isOffersDataLoading) {
+    return <Loading/>;
+  }
+
   return (
     <Fragment>
       {<Header />}
-      <main className={`page__main page__main--index ${offers.length === 0 ? 'page__main--index-empty' : ''}`}>
+      <main className={cn(
+        'page__main page__main--index', {
+          'page__main--index-empty': offers.length === 0
+        })}
+      >
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">

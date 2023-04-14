@@ -3,6 +3,7 @@ import useMap from '../../hooks/useMap';
 import {City, LocationOffer, Offer} from '../../types/offer';
 import {Icon, Marker} from 'leaflet';
 import {URL_MARKER_CURRENT, URL_MARKER_DEFAULT} from '../../const';
+import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 type MapProps = {
@@ -38,6 +39,7 @@ function Map({city, offers, setActiveCard, className}: MapProps ): JSX.Element {
   }, []);
 
   useEffect(() => {
+    const markers = leaflet.layerGroup();
     if (map) {
       map.setView({
         lat: city.location.latitude,
@@ -53,10 +55,14 @@ function Map({city, offers, setActiveCard, className}: MapProps ): JSX.Element {
             setActiveCard !== undefined && point.id === setActiveCard
               ? currentCustomIcon
               : defaultCustomIcon
-          )
-          .addTo(map);
+          );
+        marker.addTo(markers);
       });
+      markers.addTo(map);
     }
+    return (() => {
+      markers.clearLayers();
+    });
   }, [map, points, setActiveCard, city.location.latitude, city.location.longitude]);
 
   return (

@@ -1,19 +1,26 @@
 import {createReducer} from '@reduxjs/toolkit';
 import {
   changeCity,
-  changeOption, getUserInfo,
+  changeOption,
+  getUserInfo,
+  loadComments,
+  loadNearbyOffers,
+  loadOffer,
   loadOffers,
   loadOffersByCity,
   requireAuthorization,
   setOffersDataLoadingStatus
 } from './action';
-import {Offer} from '../types/offer';
+import {Offer, Review} from '../types/offer';
 import {AuthorizationStatus, Cities, Sorting} from '../const';
 import {UserData} from '../types/user-data';
 
 type initialStateType = {
   city: string;
   offers: Offer[];
+  offer: Offer | undefined | null;
+  nearbyOffers: Offer[];
+  offerComments: Review[];
   isOffersDataLoading: boolean;
   option: string;
   offersByCity: Offer[];
@@ -24,6 +31,9 @@ type initialStateType = {
 const initialState: initialStateType = {
   city: Cities[0],
   offers: [],
+  offer: null,
+  nearbyOffers: [],
+  offerComments: [],
   isOffersDataLoading: false,
   option: Sorting[0],
   offersByCity: [],
@@ -71,6 +81,15 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(getUserInfo, (state, action) => {
       state.userInfo = action.payload;
+    })
+    .addCase(loadOffer, (state, action) => {
+      state.offer = action.payload;
+    })
+    .addCase(loadNearbyOffers, (state, action) => {
+      state.nearbyOffers = action.payload;
+    })
+    .addCase(loadComments, (state, action) => {
+      state.offerComments = action.payload;
     });
 });
 

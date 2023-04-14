@@ -1,24 +1,47 @@
 import Header from '../../components/header/header';
-import { useParams } from 'react-router-dom';
-import {offers} from '../../mocks/offers';
-import {reviews} from '../../mocks/reviews';
+import {useParams} from 'react-router-dom';
 import {getStarRating} from '../../utils';
-import {Offer} from '../../types/offer';
 import AddReview from '../../components/add-review/add-review';
 import {randomId} from '../../utils';
 import Map from '../../components/map/map';
 import OfferList from '../../components/offer-list/offer-list';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import ReviewList from '../../components/review-list/review-list';
+import {useAppDispatch, useAppSelector} from '../../hooks';
+import {fetchCommentsOfferAction, fetchNearbyOffersAction, fetchOfferByIdAction} from '../../store/api-actions';
+import Loading from '../../components/loading/loading';
+import Page404 from '../page-404/page-404';
+import cn from 'classnames';
+import {AuthorizationStatus} from '../../const';
 
 function Room(): JSX.Element {
   // Get the offerId param from the URL
   const params = useParams();
-  const offerId = params.id;
-  const offer = offers.find((currentValue) => currentValue.id === Number(offerId)) as Offer;
+  const offerId = Number(params.id);
+
+  const offer = useAppSelector((state) => state.offer);
+  const offersNeighbourhood = useAppSelector((state) => state.nearbyOffers);
+  const offerReviews = useAppSelector((state) => state.offerComments);
+
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+
+  const dispatch = useAppDispatch();
 
   const [activeCard, setActiveCard] = useState<number | undefined>(undefined);
 
+  useEffect(() => {
+    dispatch(fetchOfferByIdAction(offerId));
+    dispatch(fetchNearbyOffersAction(offerId));
+    dispatch(fetchCommentsOfferAction(offerId));
+  }, [offerId, dispatch]);
+
+  if (offer === undefined) {
+    return <Page404/>;
+  }
+
+  if (!offer) {
+    return <Loading/>;
+  }
   //Goods
   const generateGoods = () => {
     if (!offer.goods.length) {
@@ -31,7 +54,7 @@ function Room(): JSX.Element {
   };
   //Images
   const generateImages = () => {
-    if (!offer.goods.length) {
+    if (!offer.images.length) {
       return (<h3>Not images</h3>);
     }
     const images = offer.images.map((currentValue) => (
@@ -41,16 +64,10 @@ function Room(): JSX.Element {
     ));
     return images;
   };
-  //Reviews
-  const offerReviews = reviews.filter((currentValue) => currentValue.id === offer.id);
 
   const images = generateImages();
   const goods = generateGoods();
   const offerStartRating = getStarRating(offer.rating);
-
-  //Get other places in the neighbourhood
-  const offersNeighbourhood = offers.filter((currentValue) =>
-    currentValue.id !== offer.id && currentValue.city.name === offer.city.name);
 
   return (
     <div className="page">
@@ -125,7 +142,12 @@ function Room(): JSX.Element {
               <div className="property__host">
                 <h2 className="property__host-title">Meet the host</h2>
                 <div className="property__host-user user">
-                  <div className={`property__avatar-wrapper ${offer.host.isPro ? 'property__avatar-wrapper--pro' : ''} user__avatar-wrapper`}>
+                  <div className={cn(
+                    'property__avatar-wrapper',
+                    'user__avatar-wrapper', {
+                      'property__avatar-wrapper--pro': offer.host.isPro
+                    })}
+                  >
                     <img className="property__avatar user__avatar"
                       src={offer.host.avatarUrl} width="74" height="74"
                       alt="Host avatar"
@@ -150,12 +172,12 @@ function Room(): JSX.Element {
               <section className="property__reviews reviews">
                 <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{offerReviews.length}</span></h2>
                 <ReviewList reviews = {offerReviews}/>
-                <AddReview/>
+                {authorizationStatus === AuthorizationStatus.Auth && <AddReview offerId = {offerId}/>}
               </section>
             </div>
           </div>
           <Map city = {offer.city}
-            offers = {offers}
+            offers = {offersNeighbourhood}
             setActiveCard = {activeCard}
             className = {'property__map map'}
           />

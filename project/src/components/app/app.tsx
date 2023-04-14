@@ -3,11 +3,9 @@ import {Route, Routes} from 'react-router-dom';
 import Page404 from '../../pages/page-404/page-404';
 import Login from '../../pages/login/login';
 import Room from '../../pages/room/room';
-import {AppRoute, AuthorizationStatus} from '../../const';
+import {AppRoute} from '../../const';
 import {checkAuthAction, fetchHotelAction} from '../../store/api-actions';
 import {store} from '../../store';
-import {useAppSelector} from '../../hooks';
-import Loading from '../loading/loading';
 import HistoryRouter from '../history-route/history-route';
 import browserHistory from '../../browser-history';
 
@@ -15,11 +13,6 @@ store.dispatch(fetchHotelAction());
 store.dispatch(checkAuthAction());
 
 function App(): JSX.Element {
-  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
-  const isOffersDataLoading = useAppSelector((state) => state.isOffersDataLoading);
-  if (authorizationStatus === AuthorizationStatus.Unknown || isOffersDataLoading) {
-    return <Loading/>;
-  }
   return (
     <HistoryRouter history={browserHistory}>
       <Routes>
