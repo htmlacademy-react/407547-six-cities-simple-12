@@ -75,3 +75,16 @@ export enum AuthorizationStatus {
   NoAuth = 'NO_AUTH',
   Unknown = 'UNKNOWN',
 }
+
+export enum NameSpace {
+  Data = 'DATA',
+  User = 'USER'
+}
+
+export const REVIEW_STARS = [
+  { value: 5, title: 'Perfect' },
+  { value: 4, title: 'Good' },
+  { value: 3, title: 'Not bad' },
+  { value: 2, title: 'Badly' },
+  { value: 1, title: 'Terribly' },
+];

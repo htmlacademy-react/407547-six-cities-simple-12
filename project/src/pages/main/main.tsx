@@ -11,15 +11,18 @@ import MainEmpty from '../main-empty/main-empty';
 import SortOptions from '../../components/sort-options/sort-options';
 import Loading from '../../components/loading/loading';
 import cn from 'classnames';
+import {getCity, getOffersDataLoading} from '../../store/offers-data/selectors';
+import {getOffersByCity} from '../../store/offers-data/selectors';
+import {getAuthorizationStatus} from '../../store/user-process/selectors';
 
 function Main(): JSX.Element {
   const [activeCard, setActiveCard] = useState< undefined | number >(undefined);
-  const currentCity = useAppSelector((state) => state.city);
-  const offers = useAppSelector((state) => state.offersByCity);
+  const currentCity = useAppSelector(getCity);
+  const offers = useAppSelector(getOffersByCity);
   const city = getLocation(currentCity, Locations) as City;
 
-  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
-  const isOffersDataLoading = useAppSelector((state) => state.isOffersDataLoading);
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
+  const isOffersDataLoading = useAppSelector(getOffersDataLoading);
 
   if (authorizationStatus === AuthorizationStatus.Unknown || isOffersDataLoading) {
     return <Loading/>;
