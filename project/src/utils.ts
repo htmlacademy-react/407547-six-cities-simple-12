@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import {City} from './types/offer';
 export const randomId = () => uuidv4();
-export const getStarRating = (value: number) => Math.floor((value * 100) / 5);
+export const getStarRating = (value: number) => Math.round((Math.round(value) * 100) / 5);
 
 export const parseDate = (value: string) => {
   const locale = 'en-US';

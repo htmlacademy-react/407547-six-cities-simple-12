@@ -4,6 +4,12 @@ export enum AppRoute {
   Root = '/'
 }
 
+export const FIRST_IMAGE_INDEX = 0;
+export const IMAGES_MAX_QUANTITY = 6;
+
+export const FIRST_COMMENT_INDEX = 0;
+export const COMMENTS_MAX_QUANTITY = 10;
+
 export const URL_MARKER_DEFAULT = 'img/pin.svg';
 
 export const URL_MARKER_CURRENT = 'img/pin-active.svg';

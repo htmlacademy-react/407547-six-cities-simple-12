@@ -12,9 +12,10 @@ import {fetchCommentsOfferAction, fetchNearbyOffersAction, fetchOfferByIdAction}
 import Loading from '../../components/loading/loading';
 import Page404 from '../page-404/page-404';
 import cn from 'classnames';
-import {AuthorizationStatus} from '../../const';
+import {AuthorizationStatus, FIRST_IMAGE_INDEX, IMAGES_MAX_QUANTITY} from '../../const';
 import {getNearbyOffers, getOffer, getOfferComments} from '../../store/offers-data/selectors';
 import {getAuthorizationStatus} from '../../store/user-process/selectors';
+import {Offer} from '../../types/offer';
 
 function Room(): JSX.Element {
   // Get the offerId param from the URL
@@ -29,7 +30,7 @@ function Room(): JSX.Element {
 
   const dispatch = useAppDispatch();
 
-  const [activeCard, setActiveCard] = useState<number | undefined>(undefined);
+  const [, setActiveCard] = useState<Offer | undefined>(undefined);
 
   useEffect(() => {
     dispatch(fetchOfferByIdAction(offerId));
@@ -59,7 +60,7 @@ function Room(): JSX.Element {
     if (!offer.images.length) {
       return (<h3>Not images</h3>);
     }
-    const images = offer.images.map((currentValue) => (
+    const images = offer.images.slice(FIRST_IMAGE_INDEX, IMAGES_MAX_QUANTITY).map((currentValue) => (
       <div className="property__image-wrapper" key={randomId()}>
         <img className="property__image" src={currentValue} alt={offer.title}/>
       </div>
@@ -179,8 +180,8 @@ function Room(): JSX.Element {
             </div>
           </div>
           <Map city = {offer.city}
-            offers = {offersNeighbourhood}
-            setActiveCard = {activeCard}
+            offers = {[...offersNeighbourhood, offer]}
+            setActiveCard = {offer}
             className = {'property__map map'}
           />
         </section>

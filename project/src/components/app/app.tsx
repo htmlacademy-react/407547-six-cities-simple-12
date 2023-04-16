@@ -6,34 +6,42 @@ import Room from '../../pages/room/room';
 import {AppRoute} from '../../const';
 import {checkAuthAction, fetchHotelAction} from '../../store/api-actions';
 import {store} from '../../store';
-import HistoryRouter from '../history-route/history-route';
-import browserHistory from '../../browser-history';
+import {useAppSelector} from '../../hooks';
+import {getOffersDataLoading} from '../../store/offers-data/selectors';
+import Loading from '../loading/loading';
+
+const isToken = localStorage.getItem('six-cities-simple');
+if (isToken) {
+  store.dispatch(checkAuthAction());
+}
 
 store.dispatch(fetchHotelAction());
-store.dispatch(checkAuthAction());
 
 function App(): JSX.Element {
+  const isOffersDataLoading = useAppSelector(getOffersDataLoading);
+
+  if (isOffersDataLoading) {
+    return <Loading/>;
+  }
   return (
-    <HistoryRouter history={browserHistory}>
-      <Routes>
-        <Route
-          path={AppRoute.Root}
-          element={<Main/>}
-        />
-        <Route
-          path={AppRoute.Login}
-          element={<Login/>}
-        />
-        <Route
-          path={`${AppRoute.Offer}/:id`}
-          element={<Room/>}
-        />
-        <Route
-          path="*"
-          element={<Page404/>}
-        />
-      </Routes>
-    </HistoryRouter>
+    <Routes>
+      <Route
+        path={AppRoute.Root}
+        element={<Main/>}
+      />
+      <Route
+        path={AppRoute.Login}
+        element={<Login/>}
+      />
+      <Route
+        path={`${AppRoute.Offer}/:id`}
+        element={<Room/>}
+      />
+      <Route
+        path="*"
+        element={<Page404/>}
+      />
+    </Routes>
   );
 }
 

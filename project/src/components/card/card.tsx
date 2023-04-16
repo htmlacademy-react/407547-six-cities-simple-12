@@ -5,7 +5,7 @@ import {getStarRating} from '../../utils';
 
 type CardProps = {
   offer: Offer;
-  setActiveCard: (id: number | undefined) => void;
+  setActiveCard: (value: Offer | undefined) => void;
 }
 
 function Card(props: CardProps): JSX.Element {
@@ -14,7 +14,7 @@ function Card(props: CardProps): JSX.Element {
 
   return (
     <article className="cities__card place-card"
-      onMouseOver={() => setActiveCard(offer.id)}
+      onMouseOver={() => setActiveCard(offer)}
       onMouseLeave={() => setActiveCard(undefined)}
     >
       {

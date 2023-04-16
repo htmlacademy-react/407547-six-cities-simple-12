@@ -9,7 +9,7 @@ import 'leaflet/dist/leaflet.css';
 type MapProps = {
   city: City;
   offers: Offer[];
-  setActiveCard: number | undefined;
+  setActiveCard: Offer | number | undefined;
   className: string;
 };
 
@@ -28,9 +28,9 @@ const currentCustomIcon = new Icon({
 function Map({city, offers, setActiveCard, className}: MapProps ): JSX.Element {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
+  const selectedOffer = setActiveCard as Offer;
 
-  const offersByCity = offers.filter((offer) => offer.city.name === city.name);
-  const points = offersByCity.reduce((accum: LocationOffer[], currentValue) => {
+  const points = offers.reduce((accum: LocationOffer[], currentValue) => {
     accum.push({
       ...currentValue.location,
       id: currentValue.id
@@ -52,7 +52,7 @@ function Map({city, offers, setActiveCard, className}: MapProps ): JSX.Element {
         });
         marker
           .setIcon(
-            setActiveCard !== undefined && point.id === setActiveCard
+            selectedOffer && point.id === selectedOffer.id
               ? currentCustomIcon
               : defaultCustomIcon
           );
@@ -63,7 +63,7 @@ function Map({city, offers, setActiveCard, className}: MapProps ): JSX.Element {
     return (() => {
       markers.clearLayers();
     });
-  }, [map, points, setActiveCard, city.location.latitude, city.location.longitude]);
+  }, [map, points, selectedOffer, city.location.latitude, city.location.longitude]);
 
   return (
     <section className={className}

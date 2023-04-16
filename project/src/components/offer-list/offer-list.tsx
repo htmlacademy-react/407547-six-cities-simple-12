@@ -4,7 +4,7 @@ import {randomId} from '../../utils';
 
 type OfferListProps = {
   offers: Offer[];
-  setActiveCard: (id: number | undefined) => void;
+  setActiveCard: (value: Offer | undefined) => void;
   className: string;
 }
 
