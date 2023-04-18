@@ -2,7 +2,6 @@ import {State} from '../../types/state';
 import {Offer, Review} from '../../types/offer';
 import {NameSpace} from '../../const';
 
-export const getOffers = (state: State): Offer[] => state[NameSpace.Data].offers;
 export const getOffer = (state: State): Offer | undefined | null => state[NameSpace.Data].offer;
 export const getNearbyOffers = (state: State): Offer[] => state[NameSpace.Data].nearbyOffers;
 export const getOfferComments = (state: State): Review[] => state[NameSpace.Data].offerComments;

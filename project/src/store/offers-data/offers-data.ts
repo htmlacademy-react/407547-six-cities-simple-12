@@ -72,14 +72,33 @@ export const offersData = createSlice({
         state.offersByCity = state.offers.filter((offer) => offer.city.name === state.city);
         state.isOffersDataLoading = false;
       })
+      .addCase(fetchHotelAction.rejected, (state) => {
+        state.offers = [];
+        state.offersByCity = [];
+        state.isOffersDataLoading = false;
+      })
       .addCase(fetchOfferByIdAction.fulfilled, (state, action) => {
         state.offer = action.payload;
+      })
+      .addCase(fetchOfferByIdAction.rejected, (state) => {
+        state.offer = null;
+        state.isOffersDataLoading = false;
+        state.nearbyOffers = [];
+        state.offerComments = [];
       })
       .addCase(fetchNearbyOffersAction.fulfilled, (state, action) => {
         state.nearbyOffers = action.payload;
       })
+      .addCase(fetchNearbyOffersAction.rejected, (state) => {
+        state.nearbyOffers = [];
+        state.isOffersDataLoading = false;
+      })
       .addCase(fetchCommentsOfferAction.fulfilled, (state, action) => {
         state.offerComments = action.payload;
+      })
+      .addCase(fetchCommentsOfferAction.rejected, (state) => {
+        state.offerComments = [];
+        state.isOffersDataLoading = false;
       })
       .addCase(postOfferCommentAction.fulfilled, (state, action) => {
         state.offerComments = action.payload;
