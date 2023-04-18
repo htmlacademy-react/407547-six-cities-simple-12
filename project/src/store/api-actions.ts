@@ -69,15 +69,21 @@ export const fetchCommentsOfferAction = createAsyncThunk<Review[] | [], number, 
   },
 );
 
-export const checkAuthAction = createAsyncThunk<UserData, undefined, {
+export const checkAuthAction = createAsyncThunk<UserData | null, undefined, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
 }>(
   'user/checkAuth',
   async (_arg, {dispatch, extra: api}) => {
-    const {data} = await api.get<UserData>(APIRoute.Login);
-    return data;
+    try {
+      const {data} = await api.get<UserData>(APIRoute.Login);
+      return data;
+
+    } catch (error) {
+      dropToken();
+      return null;
+    }
   },
 );
 
